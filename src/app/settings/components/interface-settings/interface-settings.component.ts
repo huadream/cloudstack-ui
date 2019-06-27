@@ -24,6 +24,7 @@ export class InterfaceSettingsComponent {
   public languages = [
     { value: Language.en, text: 'English' },
     { value: Language.ru, text: 'Русский' },
+    { value: Language.zh_CN, text: '简体中文' },
   ];
   public daysOfTheWeek = [
     { value: DayOfWeek.Sunday, text: 'DATE_TIME.DAYS_OF_WEEK.SUNDAY' },

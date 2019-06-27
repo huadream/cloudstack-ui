@@ -29,12 +29,15 @@
     "Translations": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ru", "en"],
+      "required": ["ru", "en", "zh-CN"],
       "properties": {
         "ru": {
           "type": "string"
         },
         "en": {
+          "type": "string"
+        },
+        "zh-CN": {
           "type": "string"
         }
       }

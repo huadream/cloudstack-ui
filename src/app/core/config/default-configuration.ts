@@ -73,7 +73,7 @@ export const customizableProperties: Readonly<CustomizableConfig> = {
    * User app settings
    */
   defaultFirstDayOfWeek: 1,
-  defaultInterfaceLanguage: 'en',
+  defaultInterfaceLanguage: 'zh-CN',
   defaultTimeFormat: 'hour24',
   defaultTheme: 'blue-red',
   sessionTimeout: 30,

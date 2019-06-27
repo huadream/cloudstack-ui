@@ -12,9 +12,9 @@ export class VmCreationSecurityGroupData {
     rules?: Rules,
     securityGroups?: SecurityGroup[],
   ) {
-    this.mode = mode;
-    this.rules = rules;
-    this.securityGroups = securityGroups;
+    //    this.mode = mode;
+    //    this.rules = rules;
+    //    this.securityGroups = securityGroups;
   }
 
   public static fromRules(rules: Rules): VmCreationSecurityGroupData {

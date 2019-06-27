@@ -43,7 +43,7 @@ export interface CustomizableConfig {
    * Firewall (Security groups) settings
    */
   securityGroupTemplates: SecurityGroupTemplate[];
-  defaultSecurityGroupName: { en: string; ru: string };
+  defaultSecurityGroupName: { en: string; ru: string; zh_CN: string };
   /*
    * Images settings
    */

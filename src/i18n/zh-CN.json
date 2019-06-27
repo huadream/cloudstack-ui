@@ -1,0 +1,1981 @@
+{
+  "COMMON": {
+    "ADD": "增加",
+    "ASSIGN": "附加",
+    "AUTO": "自动",
+    "CANCEL": "取消",
+    "CHANGE": "更改",
+    "CLEAR_COMPLETED": "清除已完成",
+    "CLOSE": "关闭",
+    "CONFIRM": "确认",
+    "CREATE": "创建",
+    "DELETE": "删除",
+    "DESCRIPTION": "描述",
+    "EDIT": "编辑",
+    "ERROR": "错误",
+    "NO": "否",
+    "NO_RESULTS": "无结果",
+    "NONE": "无",
+    "OK": "确认",
+    "REFRESH": "刷新",
+    "REMOVE": "移除",
+    "RESET": "重置",
+    "SAVE": "保存",
+    "SAVED": "已保存",
+    "SELECT": "选择",
+    "SELECT_ALL": "选择所有",
+    "STATUS": "状态",
+    "TYPE": "类型",
+    "UPDATE": "更新",
+    "VIEW": "查看",
+    "YES": "是",
+    "SEARCH": "搜索",
+    "CONTINUE": "继续",
+    "AGREE": "同意",
+    "NAME": "名称",
+    "VOLUME": "卷"
+  },
+  "DIALOG_MESSAGES": {
+    "ACCOUNT": {
+      "CONFIRM_DELETION": "您确定要删除此帐户吗？",
+      "CONFIRM_DISABLE": "您确定要停用此帐户吗？",
+      "CONFIRM_ENABLE": "您确定要启用此帐户吗？",
+      "CONFIRM_LOCK": "您确定要锁定此帐户吗？"
+    },
+    "ACCOUNT_USER": {
+      "CONFIRM_DELETION": "您确定要删除此用户吗？",
+      "CONFIRM_EDIT": "您确定要编辑此用户吗？",
+      "CONFIRM_CHANGE_PASSWORD": "您确定要更改此用户的密码吗？",
+      "CONFIRM_REGENERATE_KEY": "您确定要为此用户重新生成密钥吗？"
+    },
+    "ISO": {
+      "CONFIRM_DETACHMENT": "您确定要分离此ISO吗？",
+      "CONFIRM_DELETION": "您确定要删除此ISO吗？"
+    },
+    "SNAPSHOT": {
+      "CONFIRM_DELETION": "您确定要删除此快照吗？",
+      "CONFIRM_REVERTING": "您确定要将卷还原到此快照吗？",
+      "CONFIRM_REVERTING_WITH_VM_REBOOT": "您确定要将卷还原到此快照吗？<b>实例将重新启动。</b>",
+      "CONFIRM_ALL_DELETION": "删除此卷的快照？"
+    },
+    "VM_SNAPSHOT": {
+      "CONFIRM_DELETION": "您确定要删除此快照吗？",
+      "CONFIRM_REVERTING": "您确定要将实例还原到此快照吗？",
+      "REVERT_NOT_ALLOWED": "当前实例规格与原始规格不同。"
+    },
+    "TAG": {
+      "CONFIRM_DELETION": "您确定要删除此标签吗？"
+    },
+    "TEMPLATE": {
+      "CONFIRM_DELETION": "您确定要删除此模板吗？"
+    },
+    "VM": {
+      "CONFIRM_START": "确定要启动实例？",
+      "CONFIRM_STOP": "确定要停止实例？",
+      "CONFIRM_REBOOT": "确定要重启实例？",
+      "CONFIRM_RESTORE": "确定要重装实例？",
+      "CONFIRM_DESTROY": "确定要终止实例？",
+      "CONFIRM_EXPUNGE": "确定要销毁实例？<br><b>该操作不能被撤销</b>",
+      "CONFIRM_RECOVER": "确定要恢复实例？",
+      "CONFIRM_RESET_PASSWORD": "确定要重置密码？<br>该实例将被重启。",
+      "CONFIRM_DRIVES_DELETION": "是否删除此实例的数据卷?",
+      "CONFIRM_SAVE_PASSWORD": "您是否希望始终为新创建的实例保存密码？",
+      "CONFIRM_AFFINITY_DELETION": "您确定要删除此亲和组吗？"
+    },
+    "SECURITY_GROUPS": {
+      "CONFIRM_EDIT_FROM_VM": "This group is shared. Other instances that use this group will also be affected. Are you sure you want to edit this group in the Security Group management area?",
+      "CONFIRM_EDIT": "This group is shared. Other instances that use this group will also be affected. Are you sure you want to edit this group?",
+      "CONFIRM_DELETION": "Are you sure you want to delete this security group?",
+      "CONFIRM_CONVERT": "Are you sure you want convert this security group to Shared?"
+    },
+    "VOLUME": {
+      "CONFIRM_DELETION": "您确定要删除此卷吗？",
+      "CONFIRM_DETACHMENT": "您确定要分离此卷吗？",
+      "CONFIRM_CREATION": "您没有已创建的实例。从模板创建实例时，会自动创建卷。<br><br>您确定要创建一个额外的卷吗？"
+    }
+  },
+  "ERRORS": {
+    "SUPPORT_INFORMATION": "Support information",
+    "COMMON": {
+      "INTERNAL_ERROR": "Internal error",
+      "THE_NAME_IS_TAKEN": "The name {{ val1 }} is taken"
+    },
+    "AUTH": {
+      "INCORRECT_USERNAME": "Incorrect username",
+      "INCORRECT_CREDENTIALS": "Incorrect username or password",
+      "INCORRECT_DOMAIN": "Unable to find domain {{ val1 }}",
+      "DISABLED": "User {{ val1 }} (or their account) {{ val2 }} is disabled. Please contact the administrator."
+    },
+    "ISO": {
+      "INVALID_ISO": "Invalid ISO. Please specify valid URL.",
+      "DETACHMENT_FAILED": "Failed to detach an ISO",
+      "VMS_IN_USE": "Unable to delete the ISO as it's used by the following instances:<br>{{ vms }}"
+    },
+    "TEMPLATE": {
+      "INVALID_TEMPLATE": "Invalid template. Please specify valid URL."
+    },
+    "VM_SNAPSHOT": {
+      "LIMIT_EXCEEDED": "超出了最大实例快照量。请检查您的配置"
+    },
+    "SNAPSHOT": {
+      "LIMIT_EXCEEDED": "已超出快照限制。 您需要先删除一些以前的快照。",
+      "CREATION_UNAVAILABLE_FOR_STOPPED": "实例快照创建对于已停止的实例不可用",
+      "CREATION_UNAVAILABLE_FOR_DELETED": "实例快照创建对于已终止的实例不可用",
+      "CREATION_UNAVAILABLE": "无法创建实例快照。联系您的管理员",
+      "UNABLE_TO_REVERT_REMOVE_SNAPSHOTS": "Unable to revert snapshot for VM, please remove VM snapshots before reverting VM from snapshot",
+      "REVERT_UNAVAILABLE_FOR_DELETED": "Revert VM to snapshot is unavailable for destroyed VMs",
+      "REVERT_UNAVAILABLE_FOR_STOPPED": "Revert VM to snapshot is unavailable for stopped VMs"
+    },
+    "SSH": {
+      "PUBLIC_KEY_INVALID": "公钥无效",
+      "KEY_PAIR_ALREADY_EXISTS": "名称为 '{{ val1 }}' 的SSH密钥已存在"
+    },
+    "VM": {
+      "INSUFFICIENT_RESOURCES": "资源不足",
+      "USER_DATA_TOO_BIG": "Maximum user data size is exceeded"
+    },
+    "VM_POST_ACTION": {
+      "INVALID_URL": "Invalid URL. Please check values in VM tags"
+    },
+    "VOLUME": {
+      "NAME_TOO_LONG": "卷名不能超过 {{ val1 }} 字符",
+      "NEW_SIZE_IS_LOWER": "新大小低于当前大小",
+      "PRIMARY_STORAGE_EXCEEDED": "超出主存储容量",
+      "UNABLE_TO_FIND_PRIMARY_STORAGE": "创建卷 {{ val1 }} 时无法找到合适的主存储",
+      "VOLUME_BUSY": "卷附加到的实例上还有其他活动快照任务。 请稍后再试。",
+      "VOLUME_RESOURCES_LIMIT_EXCEEDED": "无法选择卷规格，因为它不适合可用的帐户资源",
+      "VOLUME_DELETING_UNAVAILABLE": "具有活动快照的实例无法删除数据卷",
+      "VOLUME_ATTACH_UNAVAILABLE": "具有活动快照的实例无法附加数据卷",
+      "VOLUME_ATTACH_UNAVAILABLE_FOR_DELETED": "已终止的实例不可附加数据卷",
+      "VOLUME_ATTACH_UNAVAILABLE_AS_MIGRATION_NOT_ALLOWED": "Data disk attachment is unavailable as migration of local data volume does not allowed",
+      "VOLUME_DETACH_UNAVAILABLE": "具有活动快照的实例无法分离数据卷",
+      "VOLUME_RESIZE_UNAVAILABLE": "具有活动快照的实例无法修改数据卷大小",
+      "VOLUME_COUNT_RESOURCE_LIMIT_EXCEEDED": "超出了最大卷数量。帐户资源限制是 {{ val1 }}"
+    },
+    "SNAPSHOT_POLICIES": {
+      "HOURLY_TURN_OFF": "Hourly schedule is turned off"
+    },
+    "COMPUTE_OFFERING": {
+      "RESOURCE_LIMIT_EXCEEDED": "无法选择实例规格，因为它不适合可用的帐户资源。"
+    },
+    "VM_LOGS": {
+      "TOKEN_DOES_NOT_EXIST": "The token does not exist",
+      "INVALID_TOKEN": "Invalid token"
+    },
+    "RESOURCE_QUOTAS": {
+      "FAILED_RETRIEVE": "您无法更改任何资源限制",
+      "FAILED_UPDATE": "你不能限制资源",
+      "MAX_MUST_BE_GREATER": "Maximum must be greater than or equal to minimum",
+      "MAX_MUST_BE_BETWEEN": "Maximum must be between {{ val1 }} and {{ val2 }}",
+      "NO_BILLING_ID": "Billing Id doesn't specified for user"
+    }
+  },
+  "NOTIFICATIONS": {
+    "ACCOUNT": {
+      "CREATION_DONE": "Account created",
+      "DELETION_IN_PROGRESS": "Deleting an account",
+      "DELETION_DONE": "Account deleted",
+      "DELETION_FAILED": "Failed to delete an account",
+      "DISABLE_IN_PROGRESS": "Disabling an account",
+      "DISABLE_DONE": "Account disabled",
+      "DISABLE_FAILED": "Failed to disable an account",
+      "ENABLE_DONE": "Account enabled",
+      "USER": {
+        "CREATION_DONE": "User created",
+        "UPDATE_DONE": "User updated",
+        "DELETE_DONE": "User deleted",
+        "GENERATE_KEYS_DONE": "User keys generated"
+      }
+    },
+    "PENDING_OPERATIONS": "待执行的操作",
+    "ISO": {
+      "ATTACHMENT_IN_PROGRESS": "正在附加ISO",
+      "ATTACHMENT_DONE": "ISO已附加",
+      "ATTACHMENT_FAILED": "ISO附加失败",
+      "DETACHMENT_IN_PROGRESS": "正在分离ISO",
+      "DETACHMENT_DONE": "ISO已分离",
+      "DETACHMENT_FAILED": "ISO分离失败",
+      "REGISTER_DONE": "ISO已注册",
+      "DELETION_IN_PROGRESS": "正在删除ISO",
+      "DELETION_DONE": "ISO已删除",
+      "DELETION_FAILED": "ISO删除失败"
+    },
+    "SNAPSHOT": {
+      "TAKE_IN_PROGRESS": "正在创建快照",
+      "TAKE_DONE": "快照已创建",
+      "TAKE_FAILED": "快照创建失败",
+      "DELETION_IN_PROGRESS": "正在删除快照",
+      "DELETION_DONE": "快照已删除",
+      "DELETION_FAILED": "快照删除失败",
+      "REVERT_IN_PROGRESS": "正在还原卷",
+      "REVERT_DONE": "卷已还原",
+      "REVERT_FAILED": "卷还原失败"
+    },
+    "VM_SNAPSHOTS": {
+      "TAKE_VM_SNAP_IN_PROGRESS": "正在创建实例快照",
+      "TAKE_VM_SNAP_DONE": "实例快照已创建",
+      "TAKE_VM_SNAP_FAILED": "实例快照创建失败",
+      "TAKE_SNAP_FROM_VM_SNAP_IN_PROGRESS": "正在创建快照",
+      "TAKE_SNAP_FROM_VM_SNAP_DONE": "快照已创建",
+      "TAKE_SNAP_FROM_VM_SNAP_FAILED": "快照创建失败",
+      "DELETION_IN_PROGRESS": "正在删除实例快照",
+      "DELETION_DONE": "实例快照已删除",
+      "DELETION_FAILED": "实例快照删除失败",
+      "REVERT_IN_PROGRESS": "正在还原实例",
+      "REVERT_DONE": "实例已还原",
+      "REVERT_FAILED": "实例还原失败"
+    },
+    "TEMPLATE": {
+      "REGISTER_DONE": "模板已注册",
+      "CREATION_IN_PROGRESS": "正在创建模板",
+      "CREATION_DONE": "模板已创建",
+      "CREATION_FAILED": "模板创建失败",
+      "DELETION_IN_PROGRESS": "正在删除模板",
+      "DELETION_DONE": "模板已删除",
+      "DELETION_FAILED": "模板删除失败"
+    },
+    "FIREWALL": {
+      "TEMPLATE_CREATION_DONE": "Firewall template created",
+      "TEMPLATE_DELETE_DONE": "Firewall template deleted",
+      "SHARED_GROUP_CREATION_DONE": "Shared security group created",
+      "SHARED_GROUP_DELETE_DONE": "Shared security group deleted",
+      "PRIVATE_GROUP_DELETE_DONE": "Private security group deleted",
+      "CONVERT_PRIVATE_TO_SHARED_DONE": "Private security group converted to shared security group"
+    },
+    "VM": {
+      "START_IN_PROGRESS": "启动实例",
+      "START_DONE": "实例已启动",
+      "START_FAILED": "实例启动失败",
+      "STOP_IN_PROGRESS": "停止实例",
+      "STOP_DONE": "实例已停止",
+      "STOP_FAILED": "实例停止失败",
+      "FETCH_STATISTICS_IN_PROGRESS": "获取统计信息",
+      "FETCH_STATISTICS_DONE": "统计信息已获取",
+      "FETCH_STATISTICS_FAILED": "获取统计信息失败",
+      "CHANGE_DESCRIPTION_IN_PROGRESS": "更改说明",
+      "CHANGE_DESCRIPTION_DONE": "描述已更改",
+      "CHANGE_DESCRIPTION_FAILED": "更改说明失败",
+      "REBOOT_IN_PROGRESS": "重新启动实例",
+      "REBOOT_DONE": "实例已重启",
+      "REBOOT_FAILED": "重启实例失败",
+      "RESTORE_IN_PROGRESS": "重新安装实例",
+      "RESTORE_DONE": "实例已重新安装",
+      "RESTORE_FAILED": "重新安装实例失败",
+      "RESET_PASSWORD_IN_PROGRESS": "重置密码",
+      "RESET_PASSWORD_DONE": "密码已重置",
+      "RESET_PASSWORD_FAILED": "重置密码失败",
+      "SAVE_PASSWORD_DONE": "密码已保存",
+      "DESTROY_IN_PROGRESS": "终止实例",
+      "DESTROY_DONE": "实例已终止",
+      "DESTROY_FAILED": "终止实例失败",
+      "EXPUNGE_IN_PROGRESS": "销毁实例",
+      "EXPUNGE_DONE": "实例已销毁",
+      "EXPUNGE_FAILED": "销毁实例失败",
+      "RECOVER_IN_PROGRESS": "恢复实例",
+      "RECOVER_DONE": "实例已恢复",
+      "RECOVER_FAILED": "恢复实例失败",
+      "DEPLOY_IN_PROGRESS": "部署实例",
+      "DEPLOY_DONE": "实例已部署",
+      "DEPLOY_FAILED": "部署实例失败",
+      "CHANGE_SERVICE_OFFERING_IN_PROGRESS": "更改实例规格",
+      "CHANGE_SERVICE_OFFERING_DONE": "实例规格已更改",
+      "CHANGE_SERVICE_OFFERING_FAILED": "更改实例规格失败",
+      "CHANGE_AFFINITY_GROUP_IN_PROGRESS": "更改亲和组",
+      "CHANGE_AFFINITY_GROUP_DONE": "亲和组已更改",
+      "CHANGE_AFFINITY_GROUP_FAILED": "更改关联组失败",
+      "CHANGE_SECURITY_GROUP_DONE": "安全组已更改",
+      "CHANGE_SECURITY_GROUP_FAILED": "更改安全组失败",
+      "CHANGE_SECURITY_GROUP_IN_PROGRESS": "更改安全组",
+      "CHANGE_INSTANCE_GROUP_IN_PROGRESS": "更改实例组",
+      "CHANGE_INSTANCE_GROUP_DONE": "实例组已更改",
+      "CHANGE_INSTANCE_GROUP_FAILED": "更改实例组失败",
+      "REMOVE_INSTANCE_GROUP_IN_PROGRESS": "删除实例组",
+      "REMOVE_INSTANCE_GROUP_DONE": "实例组已删除",
+      "REMOVE_INSTANCE_GROUP_FAILED": "删除实例组失败",
+      "ADD_SECONDARY_IP_DONE": "附加IP已添加",
+      "REMOVE_SECONDARY_IP_DONE": "附加IP已删除",
+      "COLOR_CHANGE_DONE": "实例颜色已更改",
+      "CHANGE_SSH_IN_PROGRESS": "更改SSH密钥",
+      "CHANGE_SSH_DONE": "SSH密钥已更改",
+      "CHANGE_SSH_FAILED": "更改SSH密钥失败",
+      "CHANGE_USER_DATA_IN_PROGRESS": "更改User Data",
+      "CHANGE_USER_DATA_DONE": "User Data已更改",
+      "CHANGE_USER_DATA_FAILED": "更改User Data失败"
+    },
+    "VOLUME": {
+      "DETACHMENT_IN_PROGRESS": "正在分离卷",
+      "DETACHMENT_DONE": "卷已分离",
+      "DETACHMENT_FAILED": "分离卷失败",
+      "DELETION_IN_PROGRESS": "正在删除卷",
+      "DELETION_DONE": "已删除卷",
+      "DELETION_FAILED": "删除卷失败",
+      "RESIZE_IN_PROGRESS": "正在调整卷大小",
+      "RESIZE_DONE": "卷大小已调整",
+      "RESIZE_FAILED": "调整卷大小失败",
+      "ATTACHMENT_IN_PROGRESS": "正在附加卷",
+      "ATTACHMENT_DONE": "卷已附加",
+      "ATTACHMENT_FAILED": "附加卷失败",
+      "CHANGE_DESCRIPTION_IN_PROGRESS": "正在更改描述",
+      "CHANGE_DESCRIPTION_DONE": "描述已更改",
+      "CHANGE_DESCRIPTION_FAILED": "更改描述失败",
+      "CREATION_IN_PROGRESS": "正在创建卷",
+      "CREATION_DONE": "卷已创建",
+      "CREATION_FAILED": "无法创建卷"
+    },
+    "SSH_KEY": {
+      "CREATION_DONE": "SSH密钥已创建",
+      "DELETE_DONE": "SSH密钥已删除"
+    },
+    "ERROR_WHILE_LOADING_DATA": "加载数据时发生错误。请刷新页面。"
+  },
+  "AUTH": {
+    "USERNAME": "用户名",
+    "PASSWORD": "密码",
+    "DOMAIN": "域",
+    "LOGIN": "登录",
+    "NOT_LOGGED_IN": "未登录",
+    "SHOW_ADVANCED": "显示高级选项",
+    "HIDE_ADVANCED": "隐藏高级选项",
+    "USERNAME_REQUIRED": "用户名必填",
+    "PASSWORD_REQUIRED": "密码必填"
+  },
+  "NAVIGATION_SIDEBAR": {
+    "WELCOME": "Welcome, {{ name }}",
+    "VMS": "实例",
+    "STORAGE": "存储",
+    "IMAGES": "镜像",
+    "SNAPSHOTS": "快照",
+    "FIREWALL_TEMPLATES": "安全组",
+    "ACTIVITY_LOG": "操作日志",
+    "SSH_KEYS": "SSH密钥",
+    "ACCOUNTS": "帐户",
+    "RESOURCE_QUOTAS": "资源配额",
+    "LOGS": "查看日志",
+    "SETTINGS": "设置",
+    "LOGOUT": "登出",
+    "LICENSE": {
+      "LICENSE_1": "© {{ year }}, ",
+      "LICENSE_2": "Bitworks Software, Ltd.",
+      "LICENSE_3": "Released under Apache v2.0 license"
+    }
+  },
+  "VM_PAGE": {
+    "COMMANDS": {
+      "START": "启动",
+      "STOP": "停止",
+      "REBOOT": "重启",
+      "RESTORE": "重装",
+      "DESTROY": "终止",
+      "EXPUNGE": "销毁",
+      "RECOVER": "恢复",
+      "RESET_PASSWORD": "重置密码",
+      "CONSOLE": "控制台",
+      "WEB_SHELL": "WebShell",
+      "VM_ACCESS": "访问实例",
+      "VM_ACCESS_TITLE": "实例",
+      "LOGS": "Log View",
+      "CREATE_VM_LOGS_TOKEN": "Create token",
+      "INVALIDATE_VM_LOGS_TOKEN": "Invalidate token"
+    },
+    "RESOURCE_USAGE": {
+      "TITLE": "资源使用量",
+      "USED": "已用",
+      "ACCOUNT": "帐户",
+      "DOMAIN": "域",
+      "FREE": "可用",
+      "VMS": "实例",
+      "NUMBER_OF_VMS": "数量",
+      "COMPUTATIONAL_RESOURCES": "计算资源",
+      "CPUS": "CPUs",
+      "RAM": "RAM",
+      "VOLUMES": "卷",
+      "SNAPSHOTS": "快照",
+      "STORAGE": "存储",
+      "PRIMARY": "主存储",
+      "SECONDARY": "二级存储"
+    },
+    "FILTERS": {
+      "SELECT_ACCOUNTS": "选择帐户",
+      "SELECT_ZONES": "选择区域",
+      "SELECT_GROUPS": "选择组",
+      "SELECT_STATES": "选择状态",
+      "NO_GROUP": "默认组",
+      "STATE_RUNNING": "运行中",
+      "STATE_STOPPED": "已停止",
+      "STATE_DESTROYED": "已终止",
+      "STATE_ERROR": "错误",
+      "GROUP_BY": "分组",
+      "GROUP_BY_ZONES": "区域",
+      "GROUP_BY_COLORS": "颜色",
+      "GROUP_BY_GROUPS": "组",
+      "GROUP_BY_ACCOUNTS": "帐户"
+    },
+    "CARD": {
+      "IP_NA": "IP N/A",
+      "CPU": "CPU",
+      "RAM": "内存",
+      "DISKS": "磁盘"
+    },
+    "SIDEBAR": {
+      "VM": "实例",
+      "STORAGE": "存储",
+      "NETWORK": "网络",
+      "TAGS": "标签"
+    },
+    "VM_DETAILS": {
+      "COLOR": "颜色",
+      "DESCRIPTION": "描述",
+      "DETAILS": {
+        "TITLE": "详情",
+        "ZONE": "区域",
+        "HOST_NAME": "实例主机名",
+        "ID": "ID",
+        "USER_DATA": "User data"
+      },
+      "SECURITY_GROUP": {
+        "STOP_MACHINE_FOR_SG": "您需要停止实例以更改安全组。 你想现在停止吗？",
+        "ASK_TO_CHANGE_SG": "您确定要分离安全组吗？"
+      },
+      "INSTANCE_GROUP": {
+        "TITLE": "群组",
+        "NO_GROUP": "默认组",
+        "CHANGE_INSTANCE_GROUP": "更改实例组",
+        "CREATE_NEW_GROUP": "创建一个新组",
+        "CHOOSE_EXISTING_GROUP": "选择一个现有的组",
+        "CHOOSE_GROUP": "选择一个群组",
+        "ENTER_GROUP_NAME": "输入组名称",
+        "REMOVE_FROM_GROUP": "从组 \"{{value}} \" 中删除"
+      },
+      "SERVICE_OFFERING": {
+        "TITLE": "实例规格",
+        "name": "名称",
+        "description": "描述",
+        "cpuNumber": "CPU cores",
+        "cpuSpeed": "CPU (MHz)",
+        "memory": "Memory (MB)",
+        "displayText": "描述",
+        "storageType": "存储类型",
+        "provisioningType": "置备类型",
+        "offerHa": "高可用",
+        "networkRate": "Network rate",
+        "minIops": "Min IO/s",
+        "maxIops": "Max IO/s",
+        "limitCpu": "CPU cap",
+        "isVolatile": "Volatile",
+        "hypervisorSnapshotReserve": "管理程序快照保留",
+        "diskBytesReadRate": "Disk read rate (MB/s)",
+        "diskBytesWriteRate": "Disk write rate (MB/s)",
+        "diskIopsReadRate": "Disk read rate (IO/s)",
+        "diskIopsWriteRate": "Disk write rate (IO/s)",
+        "deploymentPlanner": "Deployment planner",
+        "domain": "Domain",
+        "created": "创建时间",
+        "isSystem": "系统",
+        "defaultUse": "默认",
+        "isCustomized": "自定义",
+        "thin": "Thin",
+        "thick": "Thick",
+        "sparse": "Sparse",
+        "shared": "共享",
+        "local": "本地",
+        "hosttags": "Host tags"
+      },
+      "AFFINITY_GROUP": {
+        "TITLE": "亲和组",
+        "NO_AFFINITY_GROUP": "无亲和组",
+        "NO_AFFINITY_GROUPS": "无亲和组",
+        "TO_SELECT_AFFINITY_GROUP": "选择亲和组",
+        "SELECT_AFFINITY_GROUP": "选择亲和组",
+        "CREATE_NEW_GROUP": "创建一个新的组",
+        "CHOOSE_EXISTING_GROUP": "选择现有组",
+        "CHOOSE_GROUP": "选择一个组",
+        "ENTER_GROUP_NAME": "输入组名称",
+        "REMOVE_FROM_GROUP": "从组 \"{{ value }}\" 中移除",
+        "STOP_MACHINE_FOR_AG": "您需要停止实例以更改亲和组。你想现在停止吗？"
+      },
+      "TEMPLATE": "模板",
+      "SSH_KEY": {
+        "TITLE": "SSH密钥",
+        "NO_SSH_KEY": "无SSH密钥",
+        "NO_SSH_KEYS": "无SSH密钥",
+        "SELECT_SSH_KEY": "选择SSH密钥",
+        "STOP_MACHINE_FOR_SSH": "您需要停止实例以重置SSH密钥。你想现在停止吗？"
+      },
+      "STATISTICS": {
+        "TITLE": "统计",
+        "CPU_UTILIZED": "CPU utilized",
+        "NETWORK_READ": "Network read",
+        "NETWORK_WRITE": "Network write",
+        "DISK_READ": "Disk read",
+        "DISK_WRITE": "Disk write",
+        "DISK_READ_IO": "Disk read (IO)",
+        "DISK_WRITE_IO": "Disk write (IO)"
+      },
+      "VM_SNAPSHOTS": {
+        "TITLE": "实例快照",
+        "LAST_SNAPSHOT": "最新快照",
+        "VIEW_ALL": "查看所有",
+        "NO_SNAPSHOTS": "无快照",
+        "CREATE": "创建"
+      }
+    },
+    "STORAGE_DETAILS": {
+      "VOLUME_DETAILS": {
+        "GENERAL_INFORMATION": "基本信息",
+        "SIZE": "大小",
+        "DESCRIPTION": "描述",
+        "CREATED": "创建时间",
+        "STORAGE_TYPE": "Storage type",
+        "DISK_OFFERING": "卷规格",
+        "PERFORMANCE": "Performance",
+        "MIN_IOPS": "Min IO/s",
+        "MAX_IOPS": "Max IO/s",
+        "READ_RATE_MB": "Read rate",
+        "WRITE_RATE_MB": "Write rate",
+        "READ_RATE_IOPS": "Read rate (IO/s)",
+        "WRITE_RATE_IOPS": "Write rate (IO/s)"
+      },
+      "VOLUME_RESIZE": {
+        "TITLE": "调整卷大小",
+        "DISK_OFFERING": "卷规格",
+        "NEW_SIZE": "新大小",
+        "NO_AVAILABLE_OFFERINGS": "无可用规格",
+        "RESIZE": "调整"
+      },
+      "SNAPSHOT_CREATION": {
+        "TAKE_SNAPSHOT": "创建快照",
+        "NAME": "名称",
+        "DESCRIPTION": "描述"
+      },
+      "SNAPSHOTS_LIST": {
+        "LAST_SNAPSHOT": "上次快照",
+        "VIEW_ALL": "查看所有",
+        "NO_SNAPSHOTS": "无快照"
+      },
+      "SNAPSHOT_ACTIONS": {
+        "CREATE_TEMPLATE": "创建一个模板",
+        "REVERT_TO_SNAPSHOT": "将卷还原到此快照"
+      },
+      "SNAPSHOTS_MODAL": {
+        "TITLE": "快照",
+        "NAME": "名称",
+        "DESCRIPTION": "描述",
+        "DATE": "时间",
+        "ACTIONS": "操作",
+        "NO_SNAPSHOTS": "无快照"
+      },
+      "SPARE_DRIVE_ATTACHMENT": {
+        "ATTACH_VOLUME": "连接卷",
+        "SELECT_VOLUME": "选择卷",
+        "NO_AVAILABLE_VOLUMES_1": "无可用的空闲卷。如果你不想调整已附加的卷大小请点击这里",
+        "NO_AVAILABLE_VOLUMES_2": "新建一个",
+        "NO_AVAILABLE_VOLUMES_3": "。",
+        "ATTACH": "连接"
+      },
+      "ISO": {
+        "TITLE": "ISO",
+        "DETACH": "分离",
+        "NO_MEDIUM": "无已附加的介质",
+        "ATTACH": "连接"
+      },
+      "ISO_MODAL": {
+        "TITLE": "ISO附加",
+        "ATTACH": "附加"
+      }
+    },
+    "NETWORK_DETAILS": {
+      "NIC_NAME": "网卡#{{ value }} 配置",
+      "IP": "IPv4",
+      "IP_NA": "IP N/A",
+      "ARE_YOU_SURE_ADD_SECONDARY_IP": "Are you sure you want to add a secondary IP?",
+      "ARE_YOU_SURE_REMOVE_SECONDARY_IP": "Are you sure you want to remove this secondary IP?",
+      "broadcastUri": "Broadcast URI",
+      "gateway": "IPv4网关",
+      "ip6Address": "IPv6 address",
+      "ip6Cidr": "IPv6 CIDR",
+      "ip6Gateway": "IPv6网关",
+      "ipAddress": "IPv4",
+      "isDefault": "默认",
+      "isolationUri": "Isolation URI",
+      "macAddress": "MAC地址",
+      "netmask": "子网掩码",
+      "networkName": "Network name",
+      "nsxLogicalSwitch": "NSX Logical Switch",
+      "nsxLogicalSwitchPort": "NSX Logical Switch Port",
+      "secondaryIp": "附加IP",
+      "trafficType": "Traffic Type",
+      "type": "类型",
+      "FIREWALL_RULES": "Firewall rules",
+      "INGRESS": "Incoming",
+      "EGRESS": "Outgoing",
+      "ATTACH": "附加",
+      "DETACH": "分离",
+      "VIEW": "查看",
+      "NO_SG": "无安全组"
+    },
+    "VM_CREATION": {
+      "NEW_VM": "新实例",
+      "HOST_NAME": "实例主机名",
+      "DISPLAY_NAME": "实例名",
+      "THIS_NAME_IS_TAKEN": "该名称已被占用",
+      "ZONE": "区域",
+      "SERVICE_OFFERING": "实例规格",
+      "INSTALLATION_SOURCE": "安装源",
+      "DISK_OFFERING": "卷规格",
+      "DISK_SIZE": "卷大小",
+      "GROUP": "组",
+      "NO_GROUP": "默认组",
+      "AFFINITY_GROUP": "亲和组",
+      "SECURITY_GROUPS": "安全组",
+      "KB_US": "Standard (US) keyboard",
+      "KB_UK": "UK keyboard",
+      "KB_JP": "Japanese keyboard",
+      "KB_SC": "Simplified Chinese keyboard",
+      "SSH_KEY_PAIR": "SSH密钥对",
+      "NO_SSH_KEY": "无SSH密钥",
+      "START_VM": "启动实例",
+      "YOU_RAN_OUT_OF": "该资源已超过配额限制：",
+      "CPUS": "CPU",
+      "MEMORY": "内存",
+      "INSTANCES": "实例",
+      "IPS": "IP",
+      "VOLUMES": "卷",
+      "PRIMARY_STORAGE": "主存储",
+      "CREATING_SG": "正在创建安全组...",
+      "DEPLOYING_VM": "正在部署实例...",
+      "TAG_COPYING": "Copying template tags...",
+      "DEPLOYMENT_FINISHED": "部署完成",
+      "OS_TEMPLATE": "镜像",
+      "NO_TEMPLATES": "无可用模板",
+      "NO_OFFERINGS": "没有可用的实例规格",
+      "GENERAL": "基本",
+      "ADVANCED": "高级",
+      "USER_DATA": "User data",
+      "DETAILS": "详情",
+      "REQUEST": "REQUEST",
+      "PARAMS": "PARAMS",
+      "RESPONSE": "RESPONSE"
+    },
+    "MODALS": {
+      "TAKE_VM_SNAPSHOT": {
+        "TITLE": "创建实例快照",
+        "SNAPSHOT_MEMORY": "生成内存快照",
+        "WARNING_INFORMATION": "请注意，实例将在创建快照时暂停，并在快照创建后恢复。"
+      },
+      "VM_SNAPSHOT_LIST": {
+        "TITLE": "实例快照",
+        "NAME": "名称",
+        "DESCRIPTION": "描述",
+        "DATE": "Date",
+        "ACTIONS": "Actions"
+      },
+      "VM_USER_DATA": {
+        "TITLE": "User data",
+        "USER_DATA": "User data",
+        "NO_USER_DATA": "无User data"
+      }
+    }
+  },
+  "VM_POST_ACTION": {
+    "TITLE": "实例创建成功",
+    "OPEN_VNC_CONSOLE": "打开VNC控制台",
+    "OPEN_SHELL_CONSOLE": "Open WebShell",
+    "OPEN_URL": "Open URL",
+    "VNC_CONSOLE": "VNC控制台",
+    "SHELL_CONSOLE": "SSH",
+    "HTTP": "HTTP",
+    "VM_PASSWORD": "密码",
+    "UNKNOWN": "未知",
+    "LOGIN": "用户名",
+    "VM": "实例名",
+    "VM_IP": "IP",
+    "SSH_KEY": "SSH key",
+    "PORT": "端口",
+    "IPv4": "IPv4",
+    "IPv6": "IPv6",
+    "CONNECTION_STRING_6": "Connection string (IPv6)",
+    "CONNECTION_STRING_4": "Connection string (IPv4)",
+    "NOT_SET": "Not Set"
+  },
+  "VOLUME_PAGE": {
+    "FILTERS": {
+      "SELECT_ACCOUNTS": "选择帐户",
+      "SPARE_DRIVES_ONLY": "仅空闲卷",
+      "SELECT_ZONES": "选择区域",
+      "SELECT_TYPES": "选择类型",
+      "GROUP_BY": "分组",
+      "GROUP_BY_ZONES": "区域",
+      "GROUP_BY_TYPES": "类型",
+      "GROUP_BY_ACCOUNTS": "帐户"
+    },
+    "CARD": {
+      "DESCRIPTION": "描述",
+      "SIZE": "大小",
+      "STATE": "状态"
+    },
+    "SPARE_DRIVE_CREATION": {
+      "TITLE": "新建卷",
+      "NAME": "名称",
+      "ZONE": "可用区",
+      "DISK_OFFERING": "卷规格",
+      "SIZE": "大小"
+    },
+    "SIDEBAR": {
+      "VOLUME": "卷",
+      "SNAPSHOTS": "快照"
+    },
+    "DETAILS": {
+      "GENERAL_INFORMATION": "基本信息",
+      "SIZE": "大小",
+      "STORAGE_TYPE": "存储类型",
+      "DISK_OFFERING": "卷规格",
+      "NAME": "NAME",
+      "CREATED": "创建时间",
+      "name": "名称",
+      "bytesreadrate": "Read MB/s",
+      "byteswriterate": "Write MB/s",
+      "iopsreadrate": "Read IO/s",
+      "iopswriterate": "Write IO/s",
+      "displaytext": "描述",
+      "disksize": "卷大小",
+      "storagetype": "存储类型",
+      "provisioningtype": "置备类型",
+      "iscustomized": "自定义",
+      "miniops": "Min IO/s",
+      "maxiops": "Max IO/s",
+      "thin": "Thin",
+      "thick": "Thick",
+      "fat": "Fat",
+      "sparse": "Sparse",
+      "shared": "共享",
+      "local": "本地",
+      "created": "创建时间",
+      "true": "是",
+      "false": "否"
+    },
+    "SNAPSHOTS": {
+      "DESCRIPTION": "描述",
+      "DATE": "Date",
+      "VOLUME_NOT_READY": "卷还不可用。无法创建快照。"
+    },
+    "ATTACHMENT": {
+      "CHOOSE_VIRTUAL_MACHINE": "选择一个实例",
+      "NO_VMS": "无实例",
+      "NO_VMS_IN_ZONE": "此卷的区域中没有实例",
+      "ATTACH": "连接"
+    }
+  },
+  "TEMPLATE_PAGE": {
+    "DISPLAY_MODES": {
+      "TEMPLATES": "模板",
+      "ISO": "ISO"
+    },
+    "FILTERS": {
+      "SELECT_ACCOUNTS": "选择帐户",
+      "SELECT_OS_FAMILIES": "选择系统类别",
+      "SELECT_TYPES": "选择类型",
+      "SELECT_ZONES": "选择区域",
+      "SELECT_GROUPS": "选择组",
+      "GROUP_BY": "分组",
+      "GROUP_BY_ZONES": "区域",
+      "GROUP_BY_ACCOUNTS": "帐户",
+      "GROUP_BY_GROUPS": "组",
+      "NO_ZONE": "没有区域",
+      "FEATURED": "精选",
+      "SELF": "私有",
+      "COMMUNITY": "社区",
+      "SELFEXECUTABLE": "My",
+      "ALL": "所有",
+      "GENERAL": "General"
+    },
+    "CARD": {
+      "DESCRIPTION": "描述",
+      "OS": "系统"
+    },
+    "SIDEBAR": {
+      "TEMPLATE": "模板",
+      "ZONES": "可用区",
+      "TAGS": "标签",
+      "TEMPLATE_GROUP": {
+        "NAME": "组",
+        "NO_GROUP": "没有组",
+        "CHANGE_TEMPLATE_GROUP": "更改模板组",
+        "CHOOSE_EXISTING_GROUP": "选择现有组",
+        "CHOOSE_GROUP": "选择组",
+        "REMOVE_FROM_GROUP": "从组 \"{{ value }}\" 中移除"
+      }
+    },
+    "TEMPLATE_DETAILS": {
+      "OS": "系统",
+      "DETAILS": "基本信息",
+      "SIZE": "大小",
+      "EXTRACTABLE": "可提取",
+      "PUBLIC": "公共",
+      "RECOMMENDED": "推荐的",
+      "PASSWORD_ENABLED": "已启用密码",
+      "DYNAMICALLY_SCALABLE": "可动态扩展",
+      "CROSS_ZONES": "跨区域",
+      "DOMAIN": "域",
+      "CREATED": "创建时间",
+      "TYPE": "类型",
+      "BUILTIN": "内置",
+      "USER": "User",
+      "HYPERVISOR": "管理程序",
+      "DOWNLOAD_URL": "下载URL"
+    },
+    "ZONE_DETAILS": {
+      "READY": "可用"
+    },
+    "TEMPLATE_CREATION": {
+      "NEW_TEMPLATE": "Register a new template",
+      "NEW_ISO": "Register a new ISO",
+      "NAME": "名称",
+      "DESCRIPTION": "描述",
+      "URL": "URL",
+      "INVALID_URL": "Invalid URL (only http or https)",
+      "OS_TYPE": "OS type",
+      "ZONE": "Zone",
+      "GROUP": "Group",
+      "PASSWORD_ENABLED": "Password enabled",
+      "DYNAMICALLY_SCALABLE": "Dynamically scalable",
+      "HYPERVISOR": "Hypervisor",
+      "FORMAT": "Format",
+      "IS_EXTRACTABLE": "Extractable",
+      "IS_PUBLIC": "Public",
+      "IS_FEATURED": "Featured",
+      "IS_ROUTING": "Routing",
+      "REQUIRES_HVM": "Requires HVM",
+      "BOOTABLE": "Bootable",
+      "SHOW_DETAILS": "Show details",
+      "HIDE_DETAILS": "Hide details"
+    }
+  },
+  "SNAPSHOT_PAGE": {
+    "CARD": {
+      "VOLUME": "卷",
+      "VM_NAME": "实例名",
+      "VOLUME_DELETED": "已删除",
+      "VM_DELETED": "已删除",
+      "CREATED": "创建时间"
+    },
+    "TYPES": {
+      "HOURLY": "Hourly",
+      "DAILY": "Daily",
+      "WEEKLY": "Weekly",
+      "MONTHLY": "Monthly",
+      "MANUAL": "Manual"
+    },
+    "FILTERS": {
+      "VOLUME": "卷",
+      "VM": "实例",
+      "GROUP_BY": "分组",
+      "SELECT_ACCOUNTS": "选择帐户",
+      "SELECT_TYPES": "选择类型",
+      "SELECT_VMS": "选择实例",
+      "SELECT_DATE": "选择时间",
+      "GROUP_BY_TYPES": "类型",
+      "GROUP_BY_VMS": "实例",
+      "GROUP_BY_ACCOUNTS": "帐户",
+      "NO_VM": "没有实例"
+    },
+    "SIDEBAR": {
+      "DETAILS": "详情",
+      "DESCRIPTION": "描述",
+      "CREATED": "创建时间",
+      "CURRENT": "Current",
+      "TYPE": "类型",
+      "TYPES": {
+        "HOURLY": "Hourly",
+        "DAILY": "Daily",
+        "WEEKLY": "Weekly",
+        "MONTHLY": "Monthly",
+        "MANUAL": "Manual"
+      },
+      "PARENT": "Parent",
+      "VOLUME_INFORMATION": {
+        "TITLE": "卷信息",
+        "VM": "实例",
+        "VOLUME": "卷"
+      },
+      "VM_INFORMATION": "实例信息",
+      "SNAPSHOT_NOT_FOUND": "快照未找到"
+    },
+    "ACTIONS": {
+      "CREATE_TEMPLATE": "创建模板",
+      "CREATE_VOLUME": "创建卷",
+      "REVERT_TO_SNAPSHOT": "还原卷快照",
+      "DELETE_SNAPSHOT": "删除",
+      "CREATE_SNAP_FROM_VM_SNAP": "创建卷快照",
+      "REVERT_VM_TO_SNAPSHOT": "还原实例快照"
+    },
+    "MODALS": {
+      "TAKE_SNAPSHOT": "创建快照"
+    }
+  },
+  "SECURITY_GROUP_PAGE": {
+    "DETAILS": {
+      "TITLE": "详情",
+      "ID": "ID",
+      "NAME": "名称",
+      "DESCRIPTION": "描述",
+      "TYPE": "Type",
+      "VM_NAME": "实例名",
+      "VM_LIST_SHARED": "VMs using the group",
+      "VM_LIST_PRIVATE": "VM using the group",
+      "EMPTY_VM_LIST": "无实例",
+      "EMPTY_VM_NAME": "Not available"
+    },
+    "ACTION": {
+      "RULES": "Rules",
+      "CONVERT": "Convert to shared"
+    },
+    "FILTERS": {
+      "SELECT_ACCOUNTS": "选择帐户",
+      "ORPHAN": "Orphan",
+      "TEMPLATES": "Firewall Templates",
+      "SHARED": "Shared Security Groups",
+      "PRIVATE": "Private Security Groups",
+      "GROUP_BY": "Group by",
+      "PROTOCOLS": "Protocols",
+      "TYPES": "Types"
+    },
+    "LIST": {
+      "SYSTEM_SECURITY_GROUPS": "系统",
+      "CUSTOM_SECURITY_GROUPS": "自定义",
+      "SHARED_SECURITY_GROUPS": "共享"
+    },
+    "CARD": {
+      "DESCRIPTION": "描述",
+      "VM_NAME": "实例名"
+    },
+    "SIDEBAR": {
+      "FIREWALL": "防火墙",
+      "TAGS": "标签"
+    },
+    "RULES": {
+      "VIEW_TITLE": "Rules for <b>{{ value }}</b>",
+      "EDIT_TITLE": "Edit rules for <b>{{ value }}</b>",
+      "TYPE": "Type",
+      "PROTOCOL": "Protocol",
+      "CIDR": "CIDR",
+      "START_PORT": "Start port",
+      "END_PORT": "End port",
+      "INGRESS": "Ingress",
+      "INGRESS_DISPLAY": "Incoming",
+      "EGRESS": "Egress",
+      "EGRESS_DISPLAY": "Outgoing",
+      "TCP": "TCP",
+      "UDP": "UDP",
+      "ICMP": "ICMP",
+      "ICMP_TYPE": "ICMP type",
+      "ICMP_CODE": "ICMP code",
+      "ICMP_ANY": "Any",
+      "FIELD_REQUIRED": "Field is required",
+      "START_PORT_SHOULD_BE_LESS_THAN": "Start port should be less than {{ value }}",
+      "START_PORT_SHOULD_BE_LESS_THAN_END_PORT": "Start port should be less than end port",
+      "START_PORT_SHOULD_BE_GREATER_THAN": "Start port should be greater than {{ value }}",
+      "END_PORT_SHOULD_BE_LESS_THAN": "End port should be less than {{ value }}",
+      "END_PORT_SHOULD_BE_GREATER_THAN": "End port should be greater than {{ value }}",
+      "END_PORT_SHOULD_BE_GREATER_THAN_START_PORT": "End port should be greater than start port",
+      "ENTER_VALID_PORT": "Enter a valid port",
+      "ENTER_VALID_TYPE": "Enter a valid type",
+      "ENTER_VALID_CODE": "Enter a valid code",
+      "ENTER_CIDR": "CIDR v4/v6",
+      "ENTER_VALID_CIDR": "Enter a valid CIDR",
+      "FAILED_TO_ADD_RULE": "Failed to add the rule",
+      "FAILED_TO_REMOVE_RULE": "Failed to remove the rule",
+      "SELECT_IP_VERSION": "Select IP version",
+      "SELECT_TYPE": "Select types",
+      "SELECT_PROTOCOL": "Select protocols",
+      "EGRESS_RULE": "{{ type }} <b>{{ protocol }}</b> traffic to {{ ipVersion }} <b>{{ cidr }} to port {{ startPort }}</b>",
+      "EGRESS_RULE_PORT_RANGE": "{{ type }} <b>{{ protocol }}</b> traffic to {{ ipVersion }} <b>{{ cidr }}</b> to <b>port range {{ startPort }}-{{ endPort }}</b>",
+      "EGRESS_ICMP_RULE": "{{ type }} <b>{{ protocol }}</b> traffic to {{ ipVersion }} <b>{{ cidr }}</b> of ICMP type <b>{{ icmpTypeText }} [{{ icmpType }}]</b> and ICMP code <b>{{ icmpCodeText }} [{{ icmpCode }}]</b>",
+      "NO_TEXT_EGRESS_ICMP_RULE": "{{ type }} <b>{{ protocol }}</b> traffic to {{ ipVersion }} <b>{{ cidr }}</b> of ICMP type <b>{{ icmpType }}</b> and ICMP code <b>{{ icmpCode }}</b>",
+      "NO_CODE_EGRESS_ICMP_RULE": "{{ type }} <b>{{ protocol }}</b> traffic to {{ ipVersion }} <b>{{ cidr }}</b> of ICMP type <b>{{ icmpTypeText }} [{{ icmpType }}]</b> and ICMP code <b>{{ icmpCode }}</b>",
+      "EGRESS_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic to {{ ipVersion }} {{ cidr }} to port {{ startPort }}",
+      "EGRESS_RULE_PORT_RANGE_NOMARKUP": "{{ type }} {{ protocol }} traffic to {{ ipVersion }} {{ cidr }} to port range {{ startPort }}-{{ endPort }}",
+      "EGRESS_ICMP_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic to {{ ipVersion }} {{ cidr }} of ICMP type {{ icmpTypeText }} [{{ icmpType }}] and ICMP code {{ icmpCodeText }} [{{ icmpCode }}]",
+      "NO_TEXT_EGRESS_ICMP_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic to {{ ipVersion }} {{ cidr }} of ICMP type {{ icmpType }} and ICMP code {{ icmpCode }}",
+      "NO_CODE_EGRESS_ICMP_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic to {{ ipVersion }} {{ cidr }} of ICMP type {{ icmpTypeText }} [{{ icmpType }}] and ICMP code {{ icmpCode }}",
+      "INGRESS_RULE": "{{ type }} <b>{{ protocol }}</b> traffic from {{ ipVersion }} <b>{{ cidr }} to VM port {{ startPort }}</b>",
+      "INGRESS_RULE_PORT_RANGE": "{{ type }} <b>{{ protocol }}</b> traffic from {{ ipVersion }} <b>{{ cidr }}</b> to VM <b>port range {{ startPort }}-{{ endPort }}</b>",
+      "INGRESS_ICMP_RULE": "{{ type }} <b>{{ protocol }}</b> traffic from <b>{{ ipVersion }}</b> <b>{{ cidr }}</b> of ICMP type <b>{{ icmpTypeText }} [{{ icmpType }}]</b> and ICMP code <b>{{ icmpCodeText }} [{{ icmpCode }}]</b>",
+      "NO_TEXT_INGRESS_ICMP_RULE": "{{ type }} <b>{{ protocol }}</b> traffic from {{ ipVersion }} <b>{{ cidr }}</b> of ICMP type <b>{{ icmpType }}</b> and ICMP code <b>{{ icmpCode }}</b>",
+      "NO_CODE_INGRESS_ICMP_RULE": "{{ type }} <b>{{ protocol }}</b> traffic from {{ ipVersion }} <b>{{ cidr }}</b> of ICMP type <b>{{ icmpTypeText }} [{{ icmpType }}]</b> and ICMP code <b>{{ icmpCode }}</b>",
+      "INGRESS_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic from {{ ipVersion }} {{ cidr }} to port {{ startPort }}",
+      "INGRESS_RULE_PORT_RANGE_NOMARKUP": "{{ type }} {{ protocol }} traffic from {{ ipVersion }} {{ cidr }} to VM port range {{ startPort }}-{{ endPort }}",
+      "INGRESS_ICMP_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic from {{ ipVersion }} {{ cidr }} of ICMP type {{ icmpTypeText }} [{{ icmpType }}] and ICMP code {{ icmpCodeText }} [{{ icmpCode }}]",
+      "NO_TEXT_INGRESS_ICMP_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic from {{ ipVersion }} {{ cidr }} of ICMP type {{ icmpType }} and ICMP code {{ icmpCode }}",
+      "NO_CODE_INGRESS_ICMP_RULE_NOMARKUP": "{{ type }} {{ protocol }} traffic from {{ ipVersion }} {{ cidr }} of ICMP type {{ icmpTypeText }} [{{ icmpType }}] and ICMP code {{ icmpCode }}",
+      "NO_FIREWALL_RULES": "No firewall rules"
+    },
+    "ICMP_TYPES": {
+      "-1": {
+        "description": "Any",
+        "codes": {
+          "-1": "Any"
+        }
+      },
+      "0": {
+        "description": "Echo reply",
+        "codes": {
+          "0": "Echo reply"
+        }
+      },
+      "3": {
+        "description": "Destination Unreachable",
+        "codes": {
+          "0": "Destination network unreachable",
+          "1": "Destination host unreachable",
+          "2": "Destination protocol unreachable",
+          "3": "Destination port unreachable",
+          "4": "Fragmentation required, and DF flag set",
+          "5": "Source route failed",
+          "6": "Destination network unknown",
+          "7": "Destination host unknown",
+          "8": "Source host isolated",
+          "9": "Network administratively prohibited",
+          "10": "Host administratively prohibited",
+          "11": "Network unreachable for ToS",
+          "12": "Host unreachable for ToS",
+          "13": "Communication administratively prohibited",
+          "14": "Host Precedence Violation",
+          "15": "Precedence cutoff in effect"
+        }
+      },
+      "4": {
+        "description": "Source Quench",
+        "codes": {
+          "0": "Source quench"
+        }
+      },
+      "5": {
+        "description": "Redirect Message",
+        "codes": {
+          "0": "Redirect Datagram for the Network",
+          "1": "Redirect Datagram for the Host",
+          "2": "Redirect Datagram for the ToS & network",
+          "3": "Redirect Datagram for the ToS & host"
+        }
+      },
+      "6": {
+        "description": "Alternate Host Address",
+        "codes": {
+          "0": "Alternate Address for Host"
+        }
+      },
+      "8": {
+        "description": "Echo request",
+        "codes": {
+          "0": "Echo request"
+        }
+      },
+      "9": {
+        "description": "Router Advertisement",
+        "codes": {
+          "0": "Router Advertisement"
+        }
+      },
+      "10": {
+        "description": "Router Solicitation",
+        "codes": {
+          "0": "Router discovery/selection/solicitation"
+        }
+      },
+      "11": {
+        "description": "Time Exceeded",
+        "codes": {
+          "0": "TTL expired in transit",
+          "1": "Fragment reassembly time exceeded"
+        }
+      },
+      "12": {
+        "description": "Parameter Problem: Bad IP header",
+        "codes": {
+          "0": "Pointer indicates the error",
+          "1": "Missing a required option",
+          "2": "Bad length"
+        }
+      },
+      "13": {
+        "description": "Timestamp",
+        "codes": {
+          "0": "Timestamp"
+        }
+      },
+      "14": {
+        "description": "Timestamp reply",
+        "codes": {
+          "0": "Timestamp reply"
+        }
+      },
+      "15": {
+        "description": "Information request",
+        "codes": {
+          "0": "Information request"
+        }
+      },
+      "16": {
+        "description": "Information Reply",
+        "codes": {
+          "0": "Information Reply"
+        }
+      },
+      "17": {
+        "description": "Address Mask Request",
+        "codes": {
+          "0": "Address Mask Request"
+        }
+      },
+      "18": {
+        "description": "Address Mask Reply",
+        "codes": {
+          "0": "Address Mask Reply"
+        }
+      },
+      "30": {
+        "description": "Traceroute",
+        "codes": {
+          "0": "Outbound Packet successfully forwarded",
+          "1": "No route for Outbound Packet, the packet was discarded"
+        }
+      },
+      "31": {
+        "description": "Datagram Conversion Error",
+        "codes": {
+          "0": "Unknown or unspecified error",
+          "1": "Don't convert option present",
+          "2": "Unknown mandatory option present",
+          "3": "Known unsupported option present",
+          "4": "Unsupported transport protocol",
+          "5": "Overall length exceeded",
+          "6": "IP header length exceeded",
+          "7": "Transport protocol > 255",
+          "8": "Port conversion out of range",
+          "9": "Transport header length exceeded",
+          "10": "32-bit rollover missing and ACK set",
+          "11": "Unknown mandatory transport option present"
+        }
+      },
+      "32": {
+        "description": "Mobile Host Redirect",
+        "codes": {
+          "0": "Mobile Host Redirect"
+        }
+      },
+      "33": {
+        "description": "IPv6 Where-Are-You",
+        "codes": {
+          "0": "IPv6 Where-Are-You"
+        }
+      },
+      "34": {
+        "description": "IPv6 I-Am-Here",
+        "codes": {
+          "0": "IPv6 I-Am-Here"
+        }
+      },
+      "35": {
+        "description": "Mobile Registration Request",
+        "codes": {
+          "0": "Mobile Registration Request"
+        }
+      },
+      "36": {
+        "description": "Mobile Registration Reply",
+        "codes": {
+          "0": "Mobile Registration Reply"
+        }
+      },
+      "37": {
+        "description": "Domain Name Request",
+        "codes": {
+          "0": "Domain Name Request"
+        }
+      },
+      "38": {
+        "description": "Domain Name Reply",
+        "codes": {
+          "0": "Domain Name Reply"
+        }
+      },
+      "39": {
+        "description": "SKIP",
+        "codes": {
+          "0": "SKIP"
+        }
+      },
+      "40": {
+        "description": "Photuris",
+        "codes": {
+          "0": "Bad SPI",
+          "1": "Authentication Failed",
+          "2": "Decompression Failed",
+          "3": "Decryption Failed",
+          "4": "Need Authentication",
+          "5": "Need Authorization"
+        }
+      }
+    },
+    "ICMP_V6_TYPES": {
+      "-1": {
+        "description": "Any",
+        "codes": {
+          "-1": "Any"
+        }
+      },
+      "1": {
+        "description": "Destination Unreachable Message",
+        "codes": {
+          "0": "No route to destination",
+          "1": "Communication with the destination is administratively prohibited, such as a firewall filter",
+          "2": "Not assigned",
+          "3": "Address unreachable",
+          "4": "Port unreachable",
+          "5": "Source address failed ingress/egress policy",
+          "6": "Reject route to destination"
+        }
+      },
+      "2": {
+        "description": "Packet Too Big Message",
+        "codes": {
+          "0": ""
+        }
+      },
+      "3": {
+        "description": "Time Exceeded Message",
+        "codes": {
+          "0": "Hop limit exceeded in transit",
+          "1": "Fragment reassembly time exceeded"
+        }
+      },
+      "4": {
+        "description": "Parameter Problem Message",
+        "codes": {
+          "0": "Erroneous header field encountered",
+          "1": "Unrecognized next header type encountered",
+          "2": "Unrecognized IPv6 option encountered"
+        }
+      },
+      "100": {
+        "description": "Private experimentation",
+        "codes": {
+          "0": ""
+        }
+      },
+      "101": {
+        "description": "Private experimentation",
+        "codes": {
+          "0": ""
+        }
+      },
+      "127": {
+        "description": "Reserved for expansion of ICMPv6 error messages",
+        "codes": {
+          "0": ""
+        }
+      },
+      "128": {
+        "description": "Echo Request",
+        "codes": {
+          "0": ""
+        }
+      },
+      "129": {
+        "description": "Echo Reply",
+        "codes": {
+          "0": ""
+        }
+      },
+      "130": {
+        "description": "Multicast Listener Query",
+        "codes": {
+          "0": ""
+        }
+      },
+      "131": {
+        "description": "Multicast Listener Report",
+        "codes": {
+          "0": ""
+        }
+      },
+      "132": {
+        "description": "Multicast Listener Done",
+        "codes": {
+          "0": ""
+        }
+      },
+      "133": {
+        "description": "Router Solicitation",
+        "codes": {
+          "0": ""
+        }
+      },
+      "134": {
+        "description": "Router Advertisement",
+        "codes": {
+          "0": ""
+        }
+      },
+      "135": {
+        "description": "Neighbor Solicitation",
+        "codes": {
+          "0": ""
+        }
+      },
+      "136": {
+        "description": "Neighbor Advertisement",
+        "codes": {
+          "0": ""
+        }
+      },
+      "137": {
+        "description": "Redirect Message",
+        "codes": {
+          "0": ""
+        }
+      },
+      "138": {
+        "description": "Router Renumbering",
+        "codes": {
+          "0": "Router Renumbering Command",
+          "1": "Router Renumbering Result",
+          "255": "Sequence Number Reset"
+        }
+      },
+      "139": {
+        "description": "ICMP Node Information Query",
+        "codes": {
+          "0": "The Data field contains an IPv6 address which is the Subject of this Query.",
+          "1": "The Data field contains a name which is the Subject of this Query, or is empty, as in the case of a NOOP.",
+          "2": "The Data field contains an IPv4 address which is the Subject of this Query."
+        }
+      },
+      "140": {
+        "description": "ICMP Node Information Response",
+        "codes": {
+          "0": "A successful reply. The Reply Data field may or may not be empty.",
+          "1": "The Responder refuses to supply the answer. The Reply Data field will be empty.",
+          "2": "The Qtype of the Query is unknown to the Responder. The Reply Data field will be empty."
+        }
+      },
+      "141": {
+        "description": "Inverse Neighbor Discovery",
+        "codes": {
+          "0": ""
+        }
+      },
+      "142": {
+        "description": "Inverse Neighbor Discovery",
+        "codes": {
+          "0": ""
+        }
+      },
+      "144": {
+        "description": "Home Agent Address Discovery",
+        "codes": {
+          "0": ""
+        }
+      },
+      "145": {
+        "description": "Home Agent Address Discovery",
+        "codes": {
+          "0": ""
+        }
+      },
+      "146": {
+        "description": "Mobile Prefix Solicitation",
+        "codes": {
+          "0": ""
+        }
+      },
+      "147": {
+        "description": "Mobile Prefix Advertisement",
+        "codes": {
+          "0": ""
+        }
+      },
+      "160": {
+        "description": "Extended Echo Request",
+        "codes": {
+          "0": "No error"
+        }
+      },
+      "161": {
+        "description": "Extended Echo Reply",
+        "codes": {
+          "0": "No error",
+          "1": "Malformed Query",
+          "2": "No Such Interface",
+          "3": "No Such Table Entry",
+          "4": "Multiple Interfaces Satisfy Query"
+        }
+      },
+      "200": {
+        "description": "Private experimentation",
+        "codes": {
+          "0": ""
+        }
+      },
+      "201": {
+        "description": "Private experimentation",
+        "codes": {
+          "0": ""
+        }
+      },
+      "255": {
+        "description": "Reserved for expansion of ICMPv6 informational messages",
+        "codes": {
+          "0": ""
+        }
+      }
+    },
+    "TEMPLATE_CREATION": {
+      "CREATE_NEW_TEMPLATE": "Create new template",
+      "CREATE_NEW_SHARED_GROUP": "Create new shared group",
+      "NAME": "名称",
+      "DESCRIPTION": "描述",
+      "BASIC_RULES": "Basic rules"
+    }
+  },
+  "EVENT_PAGE": {
+    "SELECT_DATE": "Select a date",
+    "SELECT_LEVELS": "Select levels",
+    "SELECT_TYPES": "Select types",
+    "NO_EVENTS": "No events for the selected date",
+    "DESCRIPTION": "描述",
+    "LEVEL": "Level",
+    "TYPE": "Type",
+    "TIME": "Time"
+  },
+  "SSH_KEYS": {
+    "CREATE_SSH_KEY": "创建SSH密钥",
+    "NAME": "名称",
+    "PUBLIC_KEY": "Public key",
+    "AUTO_GENERATED": "自动生成",
+    "SAVE_THIS_KEY": "请保存此私钥，因为它不会被保存在服务器。",
+    "REMOVE_THIS_KEY": "您确定要删除此密钥吗？",
+    "KEY_REMOVAL_FAILED": "密钥删除失败",
+    "SSH_KEY_PAIR_NOT_FOUND": "SSH密钥对未找到",
+    "FINGERPRINT": "指纹",
+    "FILTERS": {
+      "SELECT_ACCOUNTS": "选择帐户",
+      "GROUP_BY": "分组",
+      "GROUP_BY_ACCOUNTS": "帐户"
+    }
+  },
+  "ACCOUNT_PAGE": {
+    "CREATION": {
+      "CREATE_ACCOUNT": "New account",
+      "USER_NAME": "Username",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "FIRST_NAME": "First name",
+      "LAST_NAME": "Last name",
+      "DOMAIN": "Domain",
+      "ROLE": "Role",
+      "ACCOUNT": "Parent account",
+      "NETWORK_DOMAIN": "Network domain"
+    },
+    "FILTERS": {
+      "SELECT_DOMAINS": "Select domains",
+      "SELECT_ROLES": "Select roles",
+      "SELECT_ROLE_TYPES": "Select role types",
+      "SELECT_STATES": "Select states",
+      "GROUP_BY": "Group by",
+      "GROUP_BY_DOMAINS": "Domains",
+      "GROUP_BY_ROLES": "Roles",
+      "GROUP_BY_ROLETYPES": "Role Types",
+      "GROUP_BY_STATES": "States"
+    },
+    "CARD": {
+      "ROLE": "Role",
+      "ROLE_TYPE": "Role type",
+      "DOMAIN": "Domain"
+    },
+    "SIDEBAR": {
+      "GENERAL": "General",
+      "USERS": "Users",
+      "LIMITS": "Limits",
+      "SETTINGS": "Settings",
+      "STATISTIC": "Statistic",
+      "ARE_YOU_SURE_UPDATE_STATS": "Are you sure you want to update account statistic"
+    },
+    "DETAILS": {
+      "TITLE": "Details",
+      "ID": "ID",
+      "ROLE": "Role",
+      "ROLE_TYPE": "Role type",
+      "DOMAIN": "Domain",
+      "VMS": "VMs",
+      "IPS": "IPs",
+      "R_BYTES": "Bytes received",
+      "S_BYTES": "Bytes sent"
+    },
+    "CONFIGURATION": {
+      "VM_LIMIT": "VM limit",
+      "IP_LIMIT": "IP limit",
+      "VOLUME_LIMIT": "Volume limit",
+      "SNAPSHOT_LIMIT": "Snapshot limit",
+      "TEMPLATE_LIMIT": "Template limit",
+      "PROJECT_LIMIT": "Project limit",
+      "NETWORK_LIMIT": "Network limit",
+      "VPC_LIMIT": "VPC limit",
+      "CPU_LIMIT": "CPU limit",
+      "MEMORY_LIMIT": "Memory limit",
+      "PSTORAGE_LIMIT": "Primary storage limit",
+      "SSTORAGE_LIMIT": "Second storage limit",
+      "VM_COUNT": "VM count",
+      "IP_COUNT": "IP count",
+      "VOLUME_COUNT": "Volume count",
+      "SNAPSHOT_COUNT": "Snapshot count",
+      "TEMPLATE_COUNT": "Template count",
+      "PROJECT_COUNT": "Project count",
+      "NETWORK_COUNT": "Network count",
+      "VPC_COUNT": "VPC count",
+      "CPU_COUNT": "CPU count",
+      "MEMORY_COUNT": "Memory count",
+      "PSTORAGE_COUNT": "Primary storage count",
+      "SSTORAGE_COUNT": "Second storage count",
+      "EDIT": "Edit",
+      "NAME": "名称",
+      "VALUE": "Value"
+    },
+    "USER": {
+      "CREATE_USER": "新建用户",
+      "EDIT_USER": "编辑用户",
+      "CHANGE_PASSWORD": "修改密码",
+      "CONFIRM_PASSWORD_ERROR": "Password does not match the confirm password",
+      "USERNAME": "用户名",
+      "PASSWORD": "密码",
+      "CONFIRM_PASSWORD": "确认密码",
+      "FIRST_NAME": "First name",
+      "LAST_NAME": "Last name",
+      "TIMEZONE": "Timezone",
+      "EMAIL": "Email",
+      "API_KEY": "API key",
+      "SECRET_KEY": "Secret key"
+    }
+  },
+  "RESOURCE_QUOTAS_PAGE": {
+    "RESOURCES": {
+      "INSTANCES": "Instances",
+      "IPS": "IPs",
+      "VOLUMES": "Volumes",
+      "SNAPSHOTS": "Snapshots",
+      "TEMPLATES": "Templates",
+      "PROJECTS": "Projects",
+      "NETWORK": "Network",
+      "VPCS": "VPCs",
+      "CPUS": "CPUs",
+      "MEMORY": "Memory (GB)",
+      "PRIMARY_STORAGE": "Primary storage (GB)",
+      "SECONDARY_STORAGE": "Secondary storage (GB)"
+    },
+    "REQUEST": {
+      "REQUEST_RESOURCES_BUTTON": "Request resources",
+      "REQUEST_RESOURCES_TITLE": "Request resources",
+      "LIMIT_UPDATED": "Resource limits updated successfully",
+      "CAN_NOT_CHANGE_RESOURCES": "You can not make any request to change resource limits",
+      "REQUEST_BUTTON": "Request"
+    },
+    "ADMIN_PAGE": {
+      "QUOTA_UPDATED": "Resource quotas updated successfully",
+      "QUOTA_LOAD_ERROR": "Failed to load resource quotas"
+    },
+    "MIN": "Min",
+    "MAX": "Max",
+    "UPDATE": "Update"
+  },
+  "LOGS_PAGE": {
+    "FILTERS": {
+      "SELECT_ACCOUNTS": "选择帐户",
+      "SELECT_VM": "选择实例",
+      "SEARCH": "搜索",
+      "SHOW_LOGS": "Show logs",
+      "START_DATE": "Start date",
+      "END_DATE": "End date",
+      "LOG_FILE": "Log file",
+      "LOG_FILE_NOT_SELECTED": "Not selected",
+      "NEWEST_FIRST": "Newest first"
+    },
+    "LIST": {
+      "DATE": "Date",
+      "LOG_FILE": "Log file",
+      "TEXT": "Text",
+      "SHOW_MORE": "Show more"
+    },
+    "FAB": {
+      "FOLLOW_LOG": "Follow log",
+      "STOP_FOLLOWING": "Stop following"
+    },
+    "TOKEN": {
+      "CONFIRM_CREATE_TOKEN": "Are you sure you want to create a token?",
+      "TOKEN_CREATED": "Token created",
+      "INVALIDATE_TOKEN": "Invalidate token",
+      "INVALIDATE": "Invalidate",
+      "INVALIDATE_SUCCESS": "Token invalidated successfully",
+      "HOW_TO_ADD_TOKEN": "How to add a token"
+    }
+  },
+  "SETTINGS": {
+    "SECURITY": {
+      "TITLE": "安全",
+      "CHANGE_PASSWORD": "修改密码",
+      "NEW_PASSWORD": "新密码",
+      "REPEAT_PASSWORD": "确认密码",
+      "PASSWORD_DOES_NOT_MATCH": "密码不匹配",
+      "ASK_TO_UPDATE_PASSWORD": "您确定要修改密码吗？",
+      "PASSWORD_CHANGED_SUCCESSFULLY": "密码已成功更改",
+      "SESSION_TIMEOUT": "会话超时（分钟）"
+    },
+    "VM": {
+      "SAVE_PASSWORD_FOR_ALL_VMS": "自动保存实例密码"
+    },
+    "API_CONFIGURATION": {
+      "TITLE": "API配置",
+      "API_KEY": "API Key",
+      "API_SECRET_KEY": "Secret key",
+      "API_URL": "Connection URL",
+      "API_DOC_LINK": "Documentation",
+      "REGENERATE_KEYS": "重新生成API密钥",
+      "ASK_GENERATE_KEYS": "您确定要重新生成API密钥吗？",
+      "GENERATE": "生成"
+    },
+    "LOOK_AND_FEEL": {
+      "TITLE": "外观",
+      "LANGUAGE": "界面语言",
+      "FIRST_DAY_OF_WEEK": "一周的第一天",
+      "TIME_FORMAT": "时间格式",
+      "hour12": "12小时制",
+      "hour24": "24小时制",
+      "AUTO": "自动",
+      "THEME": "主题色"
+    },
+    "VM_PREFERENCES": {
+      "TITLE": "实例偏好",
+      "KEYBOARD_LAYOUT": "键盘布局"
+    },
+    "ACCOUNT_TAGS": {
+      "TITLE": "帐户标签"
+    },
+    "USER_TAGS": {
+      "TITLE": "用户标签"
+    },
+    "VM_LOGS": {
+      "TITLE": "Log View (real-time mode)",
+      "SHOW_LAST_MESSAGES": "Show last (messages)",
+      "SHOW_LAST_MINUTES": "Show last (minutes)"
+    }
+  },
+  "CLIPBOARD": {
+    "COPY": "复制",
+    "COPY_SUCCESS": "已复制",
+    "COPY_FAIL": "复制到剪贴板失败"
+  },
+  "INLINE_EDIT": {
+    "CLICK_TO_EDIT": "点击编辑",
+    "ENTER_TEXT": "输入文本",
+    "SELECT_AN_OPTION": "选择一个选项"
+  },
+  "VM_NOT_FOUND": "实例未找到",
+  "VOLUME_NOT_FOUND": "卷未找到",
+  "TEMPLATE_NOT_FOUND": "模板未找到",
+  "ACCOUNT_NOT_FOUND": "帐户未找到",
+  "PULSE": {
+    "PULSE": "Pulse",
+    "DIALOG_TITLE": "Pulse plugin",
+    "CPU_RAM": "CPU / RAM",
+    "NETWORK": "Network",
+    "DISK": "Disk",
+    "RANGE": "Range",
+    "AGGREGATION": "Aggregation",
+    "SHIFT": "Shift",
+    "NO_DATA": "No data",
+    "SELECT_DATA": "Select data",
+    "ERROR": "An error occurred, please try again",
+    "LABELS": {
+      "CPU": "CPU",
+      "RAM": "RAM",
+      "NETWORK_READ": "Network read",
+      "NETWORK_WRITE": "Network write",
+      "NETWORK_READ_PACKETS": "Network read packets",
+      "NETWORK_WRITE_PACKETS": "Network write packets",
+      "NETWORK_READ_DROPS": "Network read drops",
+      "NETWORK_WRITE_DROPS": "Network write drops",
+      "NETWORK_READ_ERRORS": "Network read errors",
+      "NETWORK_WRITE_ERRORS": "Network write errors",
+      "DISK_READ": "Disk read",
+      "DISK_WRITE": "Disk write",
+      "DISK_READ_IOPS": "Disk read (IOPS)",
+      "DISK_WRITE_IOPS": "Disk write (IOPS)",
+      "DISK_IO_ERRORS": "Disk IO errors"
+    },
+    "INTERVALS": {
+      "RANGES": {
+        "15M": "15 m",
+        "30M": "30 m",
+        "1H": "1 h",
+        "2H": "2 h",
+        "3H": "3 h",
+        "4H": "4 h",
+        "12H": "12 h",
+        "1D": "1 d",
+        "1W": "1 w",
+        "30D": "30 d"
+      },
+      "AGGREGATIONS": {
+        "1M": "1 m",
+        "4M": "4 m",
+        "5M": "5 m",
+        "6M": "6 m",
+        "15M": "15 m",
+        "30M": "30 m",
+        "1H": "1 h",
+        "4H": "4 h",
+        "1D": "1 d"
+      },
+      "SHIFTS": {
+        "M": "m",
+        "H": "h",
+        "D": "d"
+      }
+    }
+  },
+  "SECURITY_GROUP_SELECTOR": {
+    "BASED_ON_VALUE": "Based on {{ value }}",
+    "BUILD_NEW_GROUP": "Build a new security group",
+    "SELECT_EXISTING_GROUP": "Select an existing group",
+    "CREATE": "Create new",
+    "SELECT_SHARED": "Select Shared",
+    "ALL_GROUPS": "All templates",
+    "SELECTED_GROUPS": "Selected templates",
+    "NETWORK_RULES": "Network rules",
+    "SELECT_SECURITY_GROUP": "Select a group",
+    "ATTACHMENT": "Shared Security Group attachment"
+  },
+  "SERVICE_OFFERING": {
+    "CHANGE_SERVICE_OFFERING": "更改实例规格",
+    "CHOOSE_SERVICE_OFFERING": "选择实例规格",
+    "NO_AVAILABLE_OFFERINGS": "无可用规格",
+    "CPU_MHZ": "{{ count }}x{{ speed }} MHz",
+    "VM_WILL_BE_RESTARTED": "实例将被重启",
+    "SHOW_DETAILS": "显示详情",
+    "HIDE_DETAILS": "隐藏详情",
+    "CUSTOM_SERVICE_OFFERING": {
+      "TITLE": "自定义规格",
+      "CPU_NUMBER": "CPU cores",
+      "CPU_SPEED": "CPU (MHz)",
+      "MEMORY": "Memory (MB)",
+      "BETWEEN": "Between {{ lowerLimit }} and {{ upperLimit }}",
+      "UP_TO": "Up to {{ upperLimit }}",
+      "FROM": "From {{ lowerLimit }}"
+    },
+    "COLUMN": {
+      "NAME": "名称",
+      "NETWORK_RATE": "Network rate (MB/s)",
+      "CPU_NUMBER": "CPU cores",
+      "CPU_SPEED": "CPU (MHz)",
+      "MEMORY": "Memory (MB)",
+      "DISK_BYTES_READ": "Disk read rate (MB/s)",
+      "DISK_BYTES_WRITE": "Disk write rate (MB/s)",
+      "DISK_IOPS_READ": "Disk read rate (IO/s)",
+      "DISK_IOPS_WRITE": "Disk write rate (IO/s)"
+    },
+    "MODES": {
+      "FIXED": "固定",
+      "CUSTOM": "自定义"
+    },
+    "FILTERS": {
+      "SELECT_CLASSES": "Select classes",
+      "COMMON": "Common"
+    }
+  },
+  "SNAPSHOT_POLICIES": {
+    "TITLE": "Recurring snapshots",
+    "SCHEDULED_SNAPSHOTS": "Scheduled snapshots",
+    "NO_RESULTS": "No recurring snapshot schedule",
+    "KEEP": "Keep",
+    "STORE_SNAPSHOTS": "Number of stored snapshots",
+    "MINUTE": "Minute",
+    "TIME": "Time",
+    "TIME_ZONE": "Time zone",
+    "HOURLY_TIME": "{{ value }} minute",
+    "DAILY_TIME": "{{ value }}",
+    "WEEKLY_TIME": "{{ value }}",
+    "MONTHLY_TIME": "{{ value }}",
+    "WEEKLY_PERIOD": "Every {{ value }}",
+    "MONTHLY_PERIOD": "day {{ value }} of month",
+    "HOURLY": "Hourly",
+    "DAILY": "Daily",
+    "WEEKLY": "Weekly",
+    "MONTHLY": "Monthly",
+    "BETWEEN": "From {{ lowerLimit }} to {{ upperLimit }}"
+  },
+  "SUGGESTION_DIALOG": {
+    "WOULD_YOU_LIKE_TO_CREATE_VM": "是否创建一个实例？",
+    "WOULD_YOU_LIKE_TO_CREATE_VOLUME": "是否创建一个新卷？",
+    "NO_DONT_ASK": "不在询问"
+  },
+  "TAGS": {
+    "CREATE_NEW_TAG": "创建一个新标签",
+    "SHOW_SYSTEM_TAGS": "显示系统标签",
+    "TAG_KEY": "Key",
+    "TAG_VALUE": "Value",
+    "TAG_ALREADY_EXISTS": "标签已存在",
+    "EDIT_TAG": "编辑标签",
+    "TAG_START_FROM_SPACE": "字段值必须以“非空格”字符开头"
+  },
+  "DISK_OFFERING_STORAGE_TYPE": {
+    "SHARED": "共享",
+    "LOCAL": "本地"
+  },
+  "VOLUME_STATE": {
+    "ALLOCATED": "已分配",
+    "READY": "可用"
+  },
+  "SNAPSHOT_STATE": {
+    "BACKEDUP": "Backed up",
+    "CREATING": "创建中",
+    "BACKINGUP": "Backing up",
+    "ALLOCATED": "已分配",
+    "ERROR": "错误"
+  },
+  "VM_SNAPSHOT_STATE": {
+    "ALLOCATED": "已分配",
+    "CREATING": "创建中",
+    "READY": "可用",
+    "REVERTING": "还原中",
+    "ERROR": "错误",
+    "EXPUNGING": "抹去中",
+    "REMOVED": "已移除"
+  },
+  "VM_STATE": {
+    "RUNNING": "正在运行",
+    "STOPPED": "已停止",
+    "STARTING": "正在启动",
+    "STOPPING": "正在停止",
+    "REBOOTING": "正在重启",
+    "RESTORING": "正在重装",
+    "DESTROYING": "正在终止",
+    "DESTROYED": "已终止",
+    "EXPUNGING": "正在销毁",
+    "DEPLOYING": "正在部署",
+    "ERROR": "Error",
+    "START_IN_PROGRESS": "正在启动",
+    "STOP_IN_PROGRESS": "正在停止",
+    "REBOOT_IN_PROGRESS": "正在重启",
+    "RESTORE_IN_PROGRESS": "正在重装",
+    "DESTROY_IN_PROGRESS": "正在销毁",
+    "DEPLOY_IN_PROGRESS": "正在部署",
+    "RESET_PASSWORD_IN_PROGRESS": "正在重置密码",
+    "EXPUNGE_IN_PROGRESS": "正在销毁",
+    "RECOVER_IN_PROGRESS": "正在恢复"
+  },
+  "VOLUME_TYPE": {
+    "ROOT": "Root卷",
+    "DATADISK": "数据卷"
+  },
+  "DATE_TIME": {
+    "AM": "AM",
+    "PM": "PM",
+    "DAY_OF_WEEK": "Day of week",
+    "DAY_OF_MONTH": "Day of month",
+    "DAYS_OF_WEEK": {
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday",
+      "SUNDAY": "Sunday",
+      "MONDAY_LOWER": "monday",
+      "TUESDAY_LOWER": "tuesday",
+      "WEDNESDAY_LOWER": "wednesday",
+      "THURSDAY_LOWER": "thursday",
+      "FRIDAY_LOWER": "friday",
+      "SATURDAY_LOWER": "saturday",
+      "SUNDAY_LOWER": "sunday"
+    }
+  },
+  "UNITS": {
+    "B": "B",
+    "KB": "KB",
+    "MB": "MB",
+    "GB": "GB",
+    "TB": "TB",
+    "KIB": "KiB",
+    "MIB": "MiB",
+    "GIB": "GiB",
+    "TIB": "TiB",
+    "BITS": "bits",
+    "KBITS": "Kbits",
+    "MBITS": "Mbits",
+    "GBITS": "Gbits",
+    "TBITS": "Tbits",
+    "GB_VALUE": "{{ value }} GB",
+    "GHZ": "GHz",
+    "IOPS": "IOPS",
+    "IOPS_VALUE": "{{ value }} IO/s",
+    "MB_VALUE": "{{ value }} MB",
+    "MBPS": "MB/s",
+    "MBPS_VALUE": "{{ value }} MB/s",
+    "MHZ": "MHz",
+    "S": "s"
+  },
+  "VOLUME_ACTIONS": {
+    "TAKE_SNAPSHOT": "创建快照",
+    "SNAPSHOT_SCHEDULE": "设置定时快照计划",
+    "RESIZE": "调整卷大小",
+    "ATTACH": "连接",
+    "DETACH": "分离",
+    "DELETE_SNAPSHOTS": "删除快照"
+  },
+  "ACCOUNT_ACTION": {
+    "DELETE": "删除帐户",
+    "DISABLE": "Disable account",
+    "ENABLE": "Enable account",
+    "LOCK": "Lock account"
+  },
+  "ACCOUNT_USER_ACTION": {
+    "DELETE": "删除用户",
+    "EDIT": "编辑用户",
+    "REGENERATE_KEY": "Regenerate key",
+    "CHANGE_PASSWORD": "修改密码"
+  },
+  "ACCOUNT_STATE": {
+    "DISABLED": "Disabled",
+    "ENABLED": "Enabled"
+  },
+  "DISK_OFFERING": {
+    "CHOOSE_DISK_OFFERING": "选择卷规格",
+    "BANDWIDTH_MBPS": "Bandwidth (MB/s)",
+    "READ": "Read",
+    "WRITE": "Write",
+    "MIN": "Min",
+    "MAX": "Max",
+    "STORAGE_TYPE": "存储类型",
+    "STORAGE_TYPE_VALUES": {
+      "shared": "共享",
+      "local": "本地"
+    },
+    "PROVISIONING_TYPE": "Provisioning type",
+    "PROVISIONING_TYPE_VALUES": {
+      "thin": "Thin",
+      "thick": "Thick",
+      "fat": "Fat"
+    },
+    "CREATED": "创建时间",
+    "CUSTOM": "自定义"
+  },
+  "VM_PASSWORD": {
+    "VM_PASSWORD": "实例密码",
+    "PASSWORD_HAS_BEEN_RESET": "实例 {{ vmName }} 的密码已重置",
+    "PASSWORD_HAS_BEEN_SET": "实例 {{ vmName }} 的密码已设置"
+  },
+  "AFFINITY_GROUP": {
+    "NAME": "名称",
+    "TYPE": "Type",
+    "DESCRIPTION": "描述"
+  }
+}

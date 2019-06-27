@@ -10,6 +10,9 @@
     },
     "en": {
       "type": "string"
+    },
+    "zh-CN": {
+      "type": "string"
     }
   }
 }

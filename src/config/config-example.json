@@ -74,7 +74,8 @@
       "id": "id-234",
       "translations": {
         "ru": "Имя группы",
-        "en": "Group Name"
+        "en": "Group Name",
+        "zh-CN": "组名"
       }
     }
   ],
@@ -119,11 +120,13 @@
       "id": "classId-1",
       "name": {
         "ru": "Имя класса - 1",
-        "en": "Class name - 1"
+        "en": "Class name - 1",
+        "zh-CN": "类名 - 1"
       },
       "description": {
         "ru": "Описание класса - 1",
-        "en": "Class description - 1"
+        "en": "Class description - 1",
+        "zh-CN": "类描述 - 1"
       },
       "computeOfferings": ["REPLACE_WITH_ID"]
     },
@@ -131,11 +134,13 @@
       "id": "classId-2",
       "name": {
         "ru": "Имя класса - 2",
-        "en": "Class name - 2"
+        "en": "Class name - 2",
+        "zh-CN": "类名 - 2"
       },
       "description": {
         "ru": "Описание класса - 2",
-        "en": "Class description - 2"
+        "en": "Class description - 2",
+        "zh-CN": "类描述 - 2"
       },
       "computeOfferings": ["REPLACE_WITH_ID"]
     }
@@ -151,6 +156,7 @@
   },
   "defaultSecurityGroupName": {
     "en": "default name",
-    "ru": "имя по умолчанию"
+    "ru": "имя по умолчанию",
+    "zh-CN": "默认名"
   }
 }

@@ -64,6 +64,7 @@ export const customizableProperties: Readonly<CustomizableConfig> = {
   defaultSecurityGroupName: {
     en: 'default',
     ru: 'default',
+    zh_CN: '默认',
   },
   /*
    * Images settings

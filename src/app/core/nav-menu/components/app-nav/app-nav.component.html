@@ -2,6 +2,11 @@
   <cs-menu-header [username]="username"></cs-menu-header>
 
   <div class="nav-routes">
+    <a class="nav-link" routerLink="/dashboard" routerLinkActive="link-active">
+      <mat-icon class="mdi-view-dashboard"></mat-icon>
+      {{ 'NAVIGATION_SIDEBAR.DASHBOARD' | translate }}
+    </a>
+    <mat-divider></mat-divider>
     <mat-accordion>
       <ng-container *ngFor="let route of routes">
         <mat-expansion-panel [expanded]="route && currentRoute && route.id === currentRoute.id">

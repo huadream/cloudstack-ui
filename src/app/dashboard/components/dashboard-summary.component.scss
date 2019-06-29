@@ -1,0 +1,26 @@
+:host {
+  max-width: 920px;
+  width: 100%;
+  margin: 0 0 40px 0;
+}
+
+mat-card {
+  border-radius: 2px;
+  width: 100%;
+
+  mat-card-content {
+    padding-bottom: 0;
+
+    table {
+      width: 100%;
+
+      .mat-row:hover {
+        background-color: white;
+      }
+
+      tr:last-child td {
+        border: none;
+      }
+    }
+  }
+}

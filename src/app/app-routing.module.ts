@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { vmRoutes } from './vm/vm.routing';
@@ -19,6 +19,9 @@ import { LoginComponent } from './auth/login.component';
 import { vmLogsRoutes } from './vm-logs/vm-logs.routing';
 import { resourceQuotasRoutes } from './resource-quotas/resource-quotas.routing';
 import { LogViewGuard } from './shared/services/log-view-guard.service';
+import { UsageListContainerComponent } from './usages/containers/usage-list.container';
+import { DashboardContainerComponent } from './dashboard/containers/dashboard.container';
+import { QuotaUsageContainerComponent } from './quota/containers/quota-usage.container';
 
 const routes: Routes = [
   {
@@ -50,11 +53,26 @@ const routes: Routes = [
         component: EventListContainerComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'usages',
+        component: UsageListContainerComponent,
+        canActivate: [AuthGuard],
+      },
       ...sshRoutes,
       ...vmLogsRoutes,
       {
         path: 'settings',
         component: SettingsComponent,
+        canActivate: [AuthGuard, LogViewGuard],
+      },
+      {
+        path: 'dashboard',
+        component: DashboardContainerComponent,
+        canActivate: [AuthGuard, LogViewGuard],
+      },
+      {
+        path: 'quota-usage',
+        component: QuotaUsageContainerComponent,
         canActivate: [AuthGuard, LogViewGuard],
       },
       {

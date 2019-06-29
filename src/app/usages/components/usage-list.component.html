@@ -1,0 +1,93 @@
+<div class="usage-list-container">
+  <cs-top-bar cs-panels>
+    <div class="filter-wrapper filter">
+      <cs-date-picker
+        [label]="'EVENT_PAGE.SELECT_DATE' | translate"
+        [okLabel]="'COMMON.OK' | translate"
+        [locale]="locale"
+        [firstDayOfWeek]="firstDayOfWeek"
+        [dateTimeFormat]="dateTimeFormatterService.dateTimeFormat"
+        [cancelLabel]="'COMMON.CANCEL' | translate"
+        [ngModel]="date"
+        (changed)="dateChange.emit($event)"
+      ></cs-date-picker>
+      <mat-form-field>
+        <mat-select
+          class="level-selector"
+          [ngModel]="selectedLevels"
+          (selectionChange)="selectedLevelsChanged.emit($event.value)"
+          multiple="true"
+          [placeholder]="'EVENT_PAGE.SELECT_LEVELS' | translate"
+        >
+          <mat-option *ngFor="let level of levels" [value]="level"> {{ level }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select
+          [ngModel]="selectedTypes"
+          (selectionChange)="usageTypesChanged.emit($event.value)"
+          multiple="true"
+          [placeholder]="'EVENT_PAGE.SELECT_TYPES' | translate"
+        >
+          <mat-option *ngFor="let et of usageTypes" [value]="et"> {{ et }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="isAdmin">
+        <mat-select
+          multiple="true"
+          [placeholder]="'VM_PAGE.FILTERS.SELECT_ACCOUNTS' | translate"
+          [(ngModel)]="selectedAccountIds"
+          (selectionChange)="accountChanged.emit($usage.value)"
+        >
+          <mat-option *ngFor="let account of accounts" [value]="account.id"
+            >{{ account.fullDomain }}{{ account.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <cs-search [ngModel]="query" (ngModelChange)="queryChanged.emit($event)"></cs-search>
+    </div>
+  </cs-top-bar>
+
+  <div class="usage-list" *loading="isLoading">
+    <ng-container *ngIf="usages?.length; then usagesTable; else noUsages"></ng-container>
+
+    <ng-template #usagesTable>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="account">
+          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.TIME' | translate }}</th>
+          <td mat-cell *matCellDef="let element">
+            <span [innerHTML]="element.account | highlight: query"></span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="usagetype">
+          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.LEVEL' | translate }}</th>
+          <td mat-cell *matCellDef="let element">
+            <span [innerHTML]="element.usagetype | highlight: query"></span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rawusage">
+          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.TYPE' | translate }}</th>
+          <td mat-cell *matCellDef="let element">
+            <span [innerHTML]="element.rawusage | highlight: query"></span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.DESCRIPTION' | translate }}</th>
+          <td mat-cell *matCellDef="let element">
+            <span [innerHTML]="element.description | highlight: query"></span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
+      </table>
+    </ng-template>
+
+    <ng-template #noUsages>
+      <span *ngIf="!usages?.length">{{ 'EVENT_PAGE.NO_EVENTS' | translate }}</span>
+    </ng-template>
+  </div>
+</div>

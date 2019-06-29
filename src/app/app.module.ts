@@ -40,6 +40,9 @@ import { AuthService } from './shared/services/auth.service';
 import { BaseHttpInterceptor } from './shared/services/base-http-interceptor';
 import { VmLogsModule } from './vm-logs/vm-logs.module';
 import { ResourceQuotasModule } from './resource-quotas/resource-quotas.module';
+import { UsagesModule } from './usages/usages.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { QuotaModule } from './quota/quota.module';
 
 // tslint:disable-next-line:function-name
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -129,6 +132,9 @@ export function InitAppFactory(
     VmModule,
     AccountModule,
     ResourceQuotasModule,
+    UsagesModule,
+    DashboardModule,
+    QuotaModule,
     NgIdleKeepaliveModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

@@ -1,0 +1,13 @@
+<cs-top-bar cs-panels>
+  <h2>Dashboard</h2>
+</cs-top-bar>
+
+<div class="container">
+  <cs-dashboard-credit> </cs-dashboard-credit>
+  <cs-dashboard-summary
+    [vms]="vms$ | async"
+    [volumes]="volumes$ | async"
+    [keys]="keys$ | async"
+    [templates]="templates$ | async"
+  ></cs-dashboard-summary>
+</div>

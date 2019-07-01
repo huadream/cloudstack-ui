@@ -21,7 +21,7 @@ import { resourceQuotasRoutes } from './resource-quotas/resource-quotas.routing'
 import { LogViewGuard } from './shared/services/log-view-guard.service';
 import { UsageListContainerComponent } from './usages/containers/usage-list.container';
 import { DashboardContainerComponent } from './dashboard/containers/dashboard.container';
-import { QuotaUsageContainerComponent } from './quota/containers/quota-usage.container';
+import { QuotaStatementContainerComponent } from './quota/containers/quota-statement.container';
 
 const routes: Routes = [
   {
@@ -71,8 +71,8 @@ const routes: Routes = [
         canActivate: [AuthGuard, LogViewGuard],
       },
       {
-        path: 'quota-usage',
-        component: QuotaUsageContainerComponent,
+        path: 'quota-statement',
+        component: QuotaStatementContainerComponent,
         canActivate: [AuthGuard, LogViewGuard],
       },
       {

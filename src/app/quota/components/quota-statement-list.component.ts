@@ -7,32 +7,21 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { MatTabChangeEvent, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 
-import { Usage } from '../usage.model';
 import { DateTimeFormatterService } from '../../shared/services/date-time-formatter.service';
 import { Account } from '../../shared/models/account.model';
 import { Language } from '../../shared/types';
-
-const typeMerge = [
-  [],
-  ['1', '2', '15', '16', '17', '25'],
-  ['6', '9', '21', '22', '23', '24'],
-  ['3', '4', '5', '13'],
-  ['7', '8'],
-  ['10', '11', '12', '14'],
-];
+import { Usage } from '../../usages/usage.model';
 
 @Component({
-  selector: 'cs-usage-list',
-  templateUrl: 'usage-list.component.html',
+  selector: 'cs-quota-statement-list',
+  templateUrl: 'quota-statement-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['usage-list.component.scss'],
+  styleUrls: ['quota-statement-list.component.scss'],
 })
-export class UsageListComponent implements OnChanges {
-  @Input()
-  public usages: Usage[] = [];
+export class QuotaStatementListComponent implements OnChanges {
   @Input()
   public selectedTypes: string[] = [];
   @Input()
@@ -55,17 +44,9 @@ export class UsageListComponent implements OnChanges {
   public isAdmin: boolean;
   @Output()
   public dateChange = new EventEmitter<Date>();
-  @Output()
-  public queryChanged = new EventEmitter<string>();
-  @Output()
-  public usageTypesChanged = new EventEmitter<string[]>();
-  @Output()
-  public selectedLevelsChanged = new EventEmitter<string[]>();
-  @Output()
-  public accountChanged = new EventEmitter<string[]>();
 
   public dataSource: MatTableDataSource<Usage>;
-  public tableColumns = ['account', 'usagetype', 'usagehour', 'description'];
+  public tableColumns = ['account', 'usagetype', 'rawusage', 'description'];
   public levels = ['INFO', 'WARN', 'ERROR'];
 
   constructor(
@@ -77,11 +58,6 @@ export class UsageListComponent implements OnChanges {
 
   public get locale(): Language {
     return this.translate.currentLang as Language;
-  }
-
-  public onTabChanged(index: number) {
-    this.selectedTypes = typeMerge[index] ? typeMerge[index] : [];
-    this.usageTypesChanged.emit(this.selectedTypes);
   }
 
   public ngOnChanges(changes: SimpleChanges) {

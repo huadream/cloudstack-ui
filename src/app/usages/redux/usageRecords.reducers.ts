@@ -41,7 +41,7 @@ export const reducers = {
  * function if the records are to be sorted.
  */
 export const adapter: EntityAdapter<Usage> = createEntityAdapter<Usage>({
-  selectId: (item: Usage) => item.usageid,
+  selectId: (item: Usage) => item.id,
   sortComparer: false,
 });
 
@@ -79,7 +79,19 @@ export function reducer(state = initialState, action: usageActions.Actions): Sta
       };
     }
     case usageActions.LOAD_USAGES_RESPONSE: {
-      const usageRecords = action.payload;
+      const usageRecordsMerge = action.payload.reduce((pre, m) => {
+        if (m.usageid) {
+          const id = `${m.usageid}_${m.usagetype}`;
+          if (pre[id]) {
+            pre[id].usagehour += Number(m.rawusage);
+          } else {
+            pre[id] = { id, ...m, usagehour: Number(m.rawusage) };
+          }
+        }
+        return pre;
+      }, {});
+      const usageRecords = Object.keys(usageRecordsMerge).map(key => usageRecordsMerge[key]);
+
       const types = Object.keys(
         usageRecords.reduce((memo, usage) => {
           return { ...memo, [usage.usagetype]: usage.usagetype };
@@ -176,7 +188,7 @@ export const selectFilteredUsageRecords = createSelector(
       usage.type.toLowerCase().includes(queryLower) ||
       usage.time.toLowerCase().includes(queryLower);
 
-    const selectedTypesFilter = usage => !selectedTypes.length || !!typeMap[usage.type];
+    const selectedTypesFilter = usage => !selectedTypes.length || !!typeMap[usage.usagetype];
 
     const selectedLevelsFilter = usage => {
       return !selectedLevels.length || !!levelsMap[usage.level];

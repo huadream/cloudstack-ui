@@ -13,6 +13,7 @@ import * as fromUsages from '../redux/usageRecords.reducers';
 import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
 import { WithUnsubscribe } from '../../utils/mixins/with-unsubscribe';
 import { AuthService } from '../../shared/services/auth.service';
+import { MatTabChangeEvent } from '@angular/material';
 
 const FILTER_KEY = 'usageListFilters';
 

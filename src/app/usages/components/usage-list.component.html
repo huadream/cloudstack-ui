@@ -37,7 +37,7 @@
           multiple="true"
           [placeholder]="'VM_PAGE.FILTERS.SELECT_ACCOUNTS' | translate"
           [(ngModel)]="selectedAccountIds"
-          (selectionChange)="accountChanged.emit($usage.value)"
+          (selectionChange)="accountChanged.emit($event.value)"
         >
           <mat-option *ngFor="let account of accounts" [value]="account.id"
             >{{ account.fullDomain }}{{ account.name }}
@@ -49,45 +49,58 @@
   </cs-top-bar>
 
   <div class="usage-list" *loading="isLoading">
-    <ng-container *ngIf="usages?.length; then usagesTable; else noUsages"></ng-container>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>2019-2010</mat-card-title>
+      </mat-card-header>
+      <mat-tab-group (selectedTabChange)="onTabChanged($event.index)">
+        <mat-tab label="All"></mat-tab>
+        <mat-tab label="Instance"></mat-tab>
+        <mat-tab label="Volume"></mat-tab>
+        <mat-tab label="Network"></mat-tab>
+        <mat-tab label="Image"></mat-tab>
+        <mat-tab label="Other"></mat-tab>
+      </mat-tab-group>
+      <ng-container *ngIf="usages?.length; then usagesTable; else noUsages"></ng-container>
+      <ng-template #usagesTable>
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="account">
+            <th mat-header-cell *matHeaderCellDef>{{ 'USAGE_PAGE.ACCOUNT' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <span [innerHTML]="element.account | highlight: query"></span>
+            </td>
+          </ng-container>
 
-    <ng-template #usagesTable>
-      <table mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="account">
-          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.TIME' | translate }}</th>
-          <td mat-cell *matCellDef="let element">
-            <span [innerHTML]="element.account | highlight: query"></span>
-          </td>
-        </ng-container>
+          <ng-container matColumnDef="usagetype">
+            <th mat-header-cell *matHeaderCellDef>{{ 'USAGE_PAGE.TYPE' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <span [innerHTML]="element.usageTypeName | translate | highlight: query"></span>
+            </td>
+          </ng-container>
 
-        <ng-container matColumnDef="usagetype">
-          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.LEVEL' | translate }}</th>
-          <td mat-cell *matCellDef="let element">
-            <span [innerHTML]="element.usagetype | highlight: query"></span>
-          </td>
-        </ng-container>
+          <ng-container matColumnDef="usagehour">
+            <th mat-header-cell *matHeaderCellDef>{{ 'USAGE_PAGE.TYPE' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <span [innerHTML]="element.usagehour | highlight: query"></span>
+            </td>
+          </ng-container>
 
-        <ng-container matColumnDef="rawusage">
-          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.TYPE' | translate }}</th>
-          <td mat-cell *matCellDef="let element">
-            <span [innerHTML]="element.rawusage | highlight: query"></span>
-          </td>
-        </ng-container>
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>{{ 'USAGE_PAGE.DESCRIPTION' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <span [innerHTML]="element.description | highlight: query"></span>
+            </td>
+          </ng-container>
 
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>{{ 'EVENT_PAGE.DESCRIPTION' | translate }}</th>
-          <td mat-cell *matCellDef="let element">
-            <span [innerHTML]="element.description | highlight: query"></span>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
-      </table>
-    </ng-template>
-
-    <ng-template #noUsages>
-      <span *ngIf="!usages?.length">{{ 'EVENT_PAGE.NO_EVENTS' | translate }}</span>
-    </ng-template>
+          <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
+        </table>
+      </ng-template>
+      <ng-template #noUsages>
+        <div class="usage-list-no-usages" *ngIf="!usages?.length">
+          {{ 'EVENT_PAGE.NO_EVENTS' | translate }}
+        </div>
+      </ng-template>
+    </mat-card>
   </div>
 </div>

@@ -4,11 +4,11 @@
   </mat-card-header>
   <mat-card-content>
     <div class="dashboard-balance">
-      ￥1000302
+      {{ quota }}
     </div>
     <mat-card-actions>
       <div class="card-right-button">
-        <button mat-button>
+        <button mat-button routerLink="/quota-statement">
           <mat-icon class="mdi-eye"></mat-icon>
           View Quota Usage
         </button>

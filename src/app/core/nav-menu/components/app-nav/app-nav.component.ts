@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Route } from '../../models';
 
@@ -13,10 +13,6 @@ export class AppNavComponent {
   public routes: Route[];
   @Input()
   public currentRoute: Route;
-  @Output()
-  public menuButtonClicked = new EventEmitter<void>();
-
-  public onMenuButtonClicked(): void {
-    this.menuButtonClicked.emit();
-  }
+  @Input()
+  public username: string;
 }

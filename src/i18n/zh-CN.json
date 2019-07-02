@@ -343,6 +343,7 @@
     "WELCOME": "Welcome, {{ name }}",
     "VMS": "实例",
     "STORAGE": "存储",
+    "CLOUD": "云",
     "IMAGES": "镜像",
     "SNAPSHOTS": "快照",
     "FIREWALL_TEMPLATES": "安全组",

@@ -14,26 +14,3 @@ cs-top-bar h2 {
   justify-content: flex-start;
   padding: 40px 20px 0 20px;
 }
-
-mat-card {
-  border-radius: 2px;
-  width: 100%;
-  max-width: 920px;
-  margin: 0 0 40px 0;
-
-  ::ng-deep .mat-tab-list {
-    flex-grow: 0;
-  }
-
-  table {
-    width: 100%;
-
-    .mat-row:hover {
-      background-color: white;
-    }
-
-    tr:last-child td {
-      border: none;
-    }
-  }
-}

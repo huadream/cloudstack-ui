@@ -1,0 +1,30 @@
+<button mat-icon-button (click)="preClicked()" [disabled]="preDisabled">
+  <mat-icon class="mdi-chevron-left"></mat-icon>
+</button>
+<button mat-button [disabled]="disabled" (click)="fromDatePicker.open()" value="fromDate">
+  {{ fromDateInput.value
+  }}<input
+    #fromDateInput
+    [matDatepicker]="fromDatePicker"
+    [max]="_toDate.value"
+    [formControl]="_fromDate"
+    (dateChange)="dateChange()"
+  />
+</button>
+<mat-datepicker #fromDatePicker></mat-datepicker>
+<mat-icon class="mdi-dots-horizontal cs-dots"></mat-icon>
+<button mat-button [disabled]="disabled" (click)="toDatePicker.open()" value="toDate">
+  {{ toDateInput.value
+  }}<input
+    #toDateInput
+    [matDatepicker]="toDatePicker"
+    [min]="_fromDate.value"
+    [max]="maxDate"
+    [formControl]="_toDate"
+    (dateChange)="dateChange()"
+  />
+</button>
+<mat-datepicker #toDatePicker></mat-datepicker>
+<button mat-icon-button (click)="nextClicked()" [disabled]="nextDisabled">
+  <mat-icon class="mdi-chevron-right"></mat-icon>
+</button>

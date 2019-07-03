@@ -6,67 +6,54 @@ const debounce = require('lodash/debounce');
 import * as moment from 'moment';
 
 import { State, UserTagsSelectors } from '../../root-store';
-import * as usageAction from '../redux/usageRecords.actions';
+import * as usageAction from '../redux/usage-records.actions';
 import { FilterService } from '../../shared/services/filter.service';
 import { SessionStorageService } from '../../shared/services/session-storage.service';
-import * as fromUsages from '../redux/usageRecords.reducers';
+import * as fromUsages from '../redux/usage-records.reducers';
 import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
 import { WithUnsubscribe } from '../../utils/mixins/with-unsubscribe';
 import { AuthService } from '../../shared/services/auth.service';
-import { MatTabChangeEvent } from '@angular/material';
+import { DatePeriod } from '../../shared/interfaces';
 
 const FILTER_KEY = 'usageListFilters';
 
 @Component({
-  selector: 'cs-usage-list-container',
+  selector: 'cs-usage-records-container',
   template: `
     <cs-usage-list
       [usages]="usages$ | async"
       [isLoading]="loading$ | async"
       [firstDayOfWeek]="firstDayOfWeek$ | async"
-      [usageTypes]="usageTypes$ | async"
-      [selectedLevels]="selectedLevels$ | async"
-      [selectedTypes]="selectedTypes$ | async"
       [date]="date$ | async"
       [query]="query$ | async"
       [accounts]="accounts$ | async"
       [isAdmin]="isAdmin()"
+      [selectedClass]="selectedClass$ | async"
       [selectedAccountIds]="selectedAccountIds$ | async"
       (accountChanged)="onAccountChange($event)"
       (dateChange)="onDateChange($event)"
       (queryChanged)="onQueryChange($event)"
-      (usageTypesChanged)="onUsageTypesChange($event)"
-      (selectedLevelsChanged)="onSelectedLevelsChange($event)"
+      (selectedClassChange)="onSelectedClassChange($event)"
     ></cs-usage-list>
   `,
 })
-export class UsageListContainerComponent extends WithUnsubscribe() implements OnInit {
+export class UsageRecordsContainerComponent extends WithUnsubscribe() implements OnInit {
   readonly firstDayOfWeek$ = this.store.pipe(select(UserTagsSelectors.getFirstDayOfWeek));
   readonly usages$ = this.store.pipe(select(fromUsages.selectFilteredUsageRecords));
   readonly accounts$ = this.store.pipe(select(fromAccounts.selectAll));
   readonly query$ = this.store.pipe(select(fromUsages.filterQuery));
   readonly loading$ = this.store.pipe(select(fromUsages.isLoading));
   readonly filters$ = this.store.pipe(select(fromUsages.filters));
-  readonly selectedTypes$ = this.store.pipe(select(fromUsages.filterSelectedTypes));
-  readonly selectedLevels$ = this.store.pipe(select(fromUsages.filterSelectedLevels));
+  readonly selectedClass$ = this.store.pipe(select(fromUsages.filterSelectedClass));
   readonly selectedAccountIds$ = this.store.pipe(select(fromUsages.filterSelectedAccountIds));
-  readonly usageTypes$ = this.store.pipe(
-    select(fromUsages.usageTypes),
-    withLatestFrom(this.selectedTypes$),
-    map(([all, selected]) => {
-      const set = new Set(all.concat(selected));
-      return [...Array.from(set)];
-    }),
-  );
-  readonly date$ = this.store.pipe(select(fromUsages.filterDate));
 
-  public levels = ['INFO', 'WARN', 'ERROR'];
+  readonly date$ = this.store.pipe(select(fromUsages.filterDate));
 
   private filterService = new FilterService(
     {
-      date: { type: 'string' },
-      levels: { type: 'array', options: this.levels, defaultOption: [] },
-      types: { type: 'array', defaultOption: [] },
+      fromDate: { type: 'string' },
+      toDate: { type: 'string' },
+      class: { type: 'string' },
       accounts: { type: 'array', defaultOption: [] },
       query: { type: 'string' },
     },
@@ -96,19 +83,15 @@ export class UsageListContainerComponent extends WithUnsubscribe() implements On
     this.store.dispatch(new usageAction.UsageFilterUpdate({ query }));
   }
 
-  public onUsageTypesChange(selectedTypes: string[]) {
-    this.store.dispatch(new usageAction.UsageFilterUpdate({ selectedTypes }));
-  }
-
-  public onSelectedLevelsChange(selectedLevels: string[]) {
-    this.store.dispatch(new usageAction.UsageFilterUpdate({ selectedLevels }));
+  public onSelectedClassChange(selectedClass: number) {
+    this.store.dispatch(new usageAction.UsageFilterUpdate({ selectedClass }));
   }
 
   public onAccountChange(selectedAccountIds: string[]) {
     this.store.dispatch(new usageAction.UsageFilterUpdate({ selectedAccountIds }));
   }
 
-  public onDateChange(date: Date) {
+  public onDateChange(date: DatePeriod) {
     this.store.dispatch(new usageAction.UsageFilterUpdate({ date }));
   }
 
@@ -116,9 +99,9 @@ export class UsageListContainerComponent extends WithUnsubscribe() implements On
     this.initFilters();
     this.filters$.pipe(takeUntil(this.unsubscribe$)).subscribe(filters => {
       this.filterService.update({
-        date: moment(filters.date).format('YYYY-MM-DD'),
-        levels: filters.selectedLevels,
-        types: filters.selectedTypes,
+        fromDate: moment(filters.date.fromDate).format('YYYY-MM-DD'),
+        toDate: moment(filters.date.toDate).format('YYYY-MM-DD'),
+        class: filters.selectedClass,
         accounts: filters.selectedAccountIds,
         query: filters.query,
       });
@@ -127,10 +110,11 @@ export class UsageListContainerComponent extends WithUnsubscribe() implements On
 
   private initFilters(): void {
     const params = this.filterService.getParams();
-
-    const date = moment(params['date']).toDate();
-    const selectedLevels = params['levels'];
-    const selectedTypes = params['types'];
+    const date = {
+      fromDate: moment(params['fromDate']).toDate(),
+      toDate: moment(params['toDate']).toDate(),
+    };
+    const selectedClass = parseInt(params['class'], 10);
     const query = params['query'];
     const selectedAccountIds = params['accounts'];
 
@@ -138,8 +122,7 @@ export class UsageListContainerComponent extends WithUnsubscribe() implements On
       new usageAction.UsageFilterUpdate({
         query,
         date,
-        selectedTypes,
-        selectedLevels,
+        selectedClass,
         selectedAccountIds,
       }),
     );

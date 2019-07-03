@@ -19,7 +19,7 @@ import { LoginComponent } from './auth/login.component';
 import { vmLogsRoutes } from './vm-logs/vm-logs.routing';
 import { resourceQuotasRoutes } from './resource-quotas/resource-quotas.routing';
 import { LogViewGuard } from './shared/services/log-view-guard.service';
-import { UsageListContainerComponent } from './usages/containers/usage-list.container';
+import { UsageRecordsContainerComponent } from './usages/containers/usage-records.container';
 import { DashboardContainerComponent } from './dashboard/containers/dashboard.container';
 import { QuotaStatementContainerComponent } from './quota/containers/quota-statement.container';
 
@@ -55,7 +55,7 @@ const routes: Routes = [
       },
       {
         path: 'usages',
-        component: UsageListContainerComponent,
+        component: UsageRecordsContainerComponent,
         canActivate: [AuthGuard],
       },
       ...sshRoutes,

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Usage } from '../usage.model';
+import { UsageRecord } from '../usage-record.model';
 
 export const LOAD_USAGES_REQUEST = '[UsageRecords] LOAD_USAGES_REQUEST';
 export const LOAD_USAGES_RESPONSE = '[UsageRecords] LOAD_USAGES_RESPONSE';
@@ -14,7 +14,7 @@ export class LoadUsageRecordsRequest implements Action {
 export class LoadUsageRecordsResponse implements Action {
   type = LOAD_USAGES_RESPONSE;
 
-  constructor(public payload: Usage[]) {}
+  constructor(public payload: UsageRecord[]) {}
 }
 
 export class UsageFilterUpdate implements Action {

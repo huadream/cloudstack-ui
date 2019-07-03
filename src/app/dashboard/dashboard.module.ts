@@ -21,8 +21,8 @@ import { ZonesEffects } from '../reducers/zones/redux/zones.effects';
 import { AccountsEffects } from '../reducers/accounts/redux/accounts.effects';
 import { AccountTagsEffects } from '../reducers/account-tags/redux/account-tags.effects';
 import { ServiceOfferingEffects } from '../reducers/service-offerings/redux/service-offerings.effects';
-import { quotaSummaryReducers } from '../quota/redux/quota.reducers';
-import { QuotaEffects } from '../quota/redux/quota.effects';
+import { quotaSummaryReducers } from '../quota/redux/quota-summary.reducers';
+import { QuotaSummaryEffects } from '../quota/redux/quota-summary.effects';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import { QuotaEffects } from '../quota/redux/quota.effects';
     StoreModule.forFeature('tags', accountTagsReducers),
     StoreModule.forFeature('zones', zoneReducers),
     StoreModule.forFeature('service-offerings', serviceOfferingReducers),
-    StoreModule.forFeature('quota-summary', quotaSummaryReducers),
+    StoreModule.forFeature('quotaSummary', quotaSummaryReducers),
     EffectsModule.forFeature([
       VirtualMachinesEffects,
       VirtualMachineCreationEffects,
@@ -43,7 +43,7 @@ import { QuotaEffects } from '../quota/redux/quota.effects';
       AccountsEffects,
       AccountTagsEffects,
       ServiceOfferingEffects,
-      QuotaEffects,
+      QuotaSummaryEffects,
     ]),
   ],
   declarations: [DashboardContainerComponent, DashboardSummaryComponent, DashboardCreditComponent],

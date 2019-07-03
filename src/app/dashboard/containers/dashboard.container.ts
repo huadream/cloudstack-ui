@@ -14,12 +14,12 @@ import * as fromVMs from '../../reducers/vm/redux/vm.reducers';
 import * as fromVolumes from '../../reducers/volumes/redux/volumes.reducers';
 import * as fromSsh_keys from '../../reducers/ssh-keys/redux/ssh-key.reducers';
 import * as fromTemplates from '../../reducers/templates/redux/template.reducers';
-import * as fromQuota from '../../quota/redux/quota.reducers';
+import * as fromQuota from '../../quota/redux/quota-summary.reducers';
 import * as vmActions from '../../reducers/vm/redux/vm.actions';
 import * as volumeActions from '../../reducers/volumes/redux/volumes.actions';
 import * as ssh_keyActions from '../../reducers/ssh-keys/redux/ssh-key.actions';
 import * as templateActions from '../../reducers/templates/redux/template.actions';
-import * as quotaActions from '../../quota/redux/quota.actions';
+import * as quotaActions from '../../quota/redux/quota-summary.actions';
 import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
 
 @Component({

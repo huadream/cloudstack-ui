@@ -7,20 +7,22 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 
 import { UsageService } from './usage.service';
-import { UsageListContainerComponent } from './containers/usage-list.container';
-import { reducers } from './redux/usageRecords.reducers';
-import { UsageRecordsEffects } from './redux/usageRecords.effects';
+import { UsageRecordsContainerComponent } from './containers/usage-records.container';
+import { reducers } from './redux/usage-records.reducers';
+import { UsageRecordsEffects } from './redux/usage-records.effects';
 import { UsageListComponent } from './components/usage-list.component';
+import { QuotaModule } from '../quota/quota.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     MaterialModule,
+    QuotaModule,
     StoreModule.forFeature('usageRecords', reducers),
     EffectsModule.forFeature([UsageRecordsEffects]),
   ],
-  declarations: [UsageListContainerComponent, UsageListComponent],
+  declarations: [UsageRecordsContainerComponent, UsageListComponent],
   providers: [UsageService],
 })
 export class UsagesModule {}

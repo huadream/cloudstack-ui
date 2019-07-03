@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BackendResource } from '../shared/decorators';
 import { BaseBackendService, FormattedResponse } from '../shared/services/base-backend.service';
 
-import { Usage, usageTypeNameMap } from './usage.model';
+import { UsageRecord, usageTypeNameMap } from './usage-record.model';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 import { DateTimeFormatterService } from '../shared/services/date-time-formatter.service';
@@ -11,7 +11,7 @@ import { DateTimeFormatterService } from '../shared/services/date-time-formatter
 @BackendResource({
   entity: 'UsageRecord',
 })
-export class UsageService extends BaseBackendService<Usage> {
+export class UsageService extends BaseBackendService<UsageRecord> {
   constructor(
     protected http: HttpClient,
     private dateTimeFormatterService: DateTimeFormatterService,
@@ -19,7 +19,7 @@ export class UsageService extends BaseBackendService<Usage> {
     super(http);
   }
 
-  protected formatGetListResponse(response: any): FormattedResponse<Usage> {
+  protected formatGetListResponse(response: any): FormattedResponse<UsageRecord> {
     const result = super.formatGetListResponse(response);
 
     return {
@@ -28,7 +28,7 @@ export class UsageService extends BaseBackendService<Usage> {
     };
   }
 
-  private prepareUsageModel(usageRecord): Usage {
+  private prepareUsageModel(usageRecord): UsageRecord {
     usageRecord.usageTypeName = usageTypeNameMap[usageRecord.usagetype];
     return usageRecord;
   }

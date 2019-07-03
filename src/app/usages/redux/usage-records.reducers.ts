@@ -1,9 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import * as moment from 'moment';
-import * as usageActions from './usageRecords.actions';
-import { Usage } from '../usage.model';
+import * as usageActions from './usage-records.actions';
+import { UsageRecord, usageTypeClass } from '../usage-record.model';
 import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
+import { DatePeriod } from '../../shared/interfaces';
 
 /**
  * @ngrx/entity provides a predefined interface for handling
@@ -12,14 +13,12 @@ import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
  * model type by id. This interface is extended to include
  * any additional interface properties.
  */
-export interface State extends EntityState<Usage> {
+export interface State extends EntityState<UsageRecord> {
   loading: boolean;
-  usageTypes: string[];
   filters: {
-    date: Date;
-    selectedTypes: string[];
-    selectedLevels: string[];
+    date: DatePeriod;
     selectedAccountIds: string[];
+    selectedClass: number;
     query: string;
   };
 }
@@ -40,8 +39,8 @@ export const reducers = {
  * a sortComparer option which is set to a compare
  * function if the records are to be sorted.
  */
-export const adapter: EntityAdapter<Usage> = createEntityAdapter<Usage>({
-  selectId: (item: Usage) => item.id,
+export const adapter: EntityAdapter<UsageRecord> = createEntityAdapter<UsageRecord>({
+  selectId: (item: UsageRecord) => item.id,
   sortComparer: false,
 });
 
@@ -51,12 +50,10 @@ export const adapter: EntityAdapter<Usage> = createEntityAdapter<Usage>({
  */
 export const initialState: State = adapter.getInitialState({
   loading: false,
-  usageTypes: [],
   filters: {
-    date: moment().toDate(),
-    selectedTypes: [],
-    selectedLevels: [],
+    date: { fromDate: moment().toDate(), toDate: moment().toDate() },
     selectedAccountIds: [],
+    selectedClass: 0,
     query: '',
   },
 });
@@ -92,11 +89,11 @@ export function reducer(state = initialState, action: usageActions.Actions): Sta
       }, {});
       const usageRecords = Object.keys(usageRecordsMerge).map(key => usageRecordsMerge[key]);
 
-      const types = Object.keys(
-        usageRecords.reduce((memo, usage) => {
-          return { ...memo, [usage.usagetype]: usage.usagetype };
-        }, {}),
-      );
+      // const types = Object.keys(
+      //   usageRecords.reduce((memo, usage) => {
+      //     return { ...memo, [usage.usagetype]: usage.usagetype };
+      //   }, {}),
+      // );
 
       return {
         /**
@@ -107,7 +104,6 @@ export function reducer(state = initialState, action: usageActions.Actions): Sta
          * sort each record upon entry into the sorted array.
          */
         ...adapter.addAll(usageRecords, state),
-        usageTypes: types,
         loading: false,
       };
     }
@@ -134,11 +130,6 @@ export const isLoading = createSelector(
   state => state.loading,
 );
 
-export const usageTypes = createSelector(
-  getUsageRecordsEntitiesState,
-  state => state.usageTypes,
-);
-
 export const filters = createSelector(
   getUsageRecordsEntitiesState,
   state => state.filters,
@@ -154,14 +145,9 @@ export const filterQuery = createSelector(
   state => state.query,
 );
 
-export const filterSelectedTypes = createSelector(
+export const filterSelectedClass = createSelector(
   filters,
-  state => state.selectedTypes,
-);
-
-export const filterSelectedLevels = createSelector(
-  filters,
-  state => state.selectedLevels,
+  state => state.selectedClass,
 );
 
 export const filterSelectedAccountIds = createSelector(
@@ -172,14 +158,12 @@ export const filterSelectedAccountIds = createSelector(
 export const selectFilteredUsageRecords = createSelector(
   selectAll,
   filterQuery,
-  filterSelectedTypes,
-  filterSelectedLevels,
+  filterSelectedClass,
   filterSelectedAccountIds,
   fromAccounts.selectEntities,
-  (usageRecords, query, selectedTypes, selectedLevels, selectedAccountIds, accountEntities) => {
+  (usageRecords, query, selectedClass, selectedAccountIds, accountEntities) => {
     const queryLower = query && query.toLowerCase();
-    const typeMap = selectedTypes.reduce((m, i) => ({ ...m, [i]: i }), {});
-    const levelsMap = selectedLevels.reduce((m, i) => ({ ...m, [i]: i }), {});
+    const typeMap = usageTypeClass[selectedClass].reduce((m, i) => ({ ...m, [i]: i }), {});
 
     const queryFilter = usage =>
       !query ||
@@ -188,11 +172,7 @@ export const selectFilteredUsageRecords = createSelector(
       usage.type.toLowerCase().includes(queryLower) ||
       usage.time.toLowerCase().includes(queryLower);
 
-    const selectedTypesFilter = usage => !selectedTypes.length || !!typeMap[usage.usagetype];
-
-    const selectedLevelsFilter = usage => {
-      return !selectedLevels.length || !!levelsMap[usage.level];
-    };
+    const selectedTypesFilter = usage => selectedClass === 0 || !!typeMap[usage.usagetype];
 
     const accountsMap = selectedAccountIds.reduce((memo, id) => {
       const account = accountEntities[id];
@@ -206,12 +186,7 @@ export const selectFilteredUsageRecords = createSelector(
       !selectedAccountIds.length || accountsMap[`${usage.account}_${usage.domain}`];
 
     return usageRecords.filter(usage => {
-      return (
-        queryFilter(usage) &&
-        selectedTypesFilter(usage) &&
-        selectedLevelsFilter(usage) &&
-        selectedAccountIdsFilter(usage)
-      );
+      return queryFilter(usage) && selectedTypesFilter(usage) && selectedAccountIdsFilter(usage);
     });
   },
 );

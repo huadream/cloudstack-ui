@@ -4,9 +4,9 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
-import * as usage from './usageRecords.actions';
+import * as usage from './usage-records.actions';
 import { UsageService } from '../usage.service';
-import { Usage } from '../usage.model';
+import { UsageRecord } from '../usage-record.model';
 import { formatIso } from '../../shared/components/date-picker/dateUtils';
 
 @Injectable()
@@ -19,8 +19,8 @@ export class UsageRecordsEffects {
     map(
       date =>
         new usage.LoadUsageRecordsRequest({
-          startDate: formatIso(date),
-          endDate: formatIso(date),
+          startDate: formatIso(date.fromDate),
+          endDate: formatIso(date.toDate),
         }),
     ),
   );
@@ -30,7 +30,7 @@ export class UsageRecordsEffects {
     ofType(usage.LOAD_USAGES_REQUEST),
     switchMap((action: usage.LoadUsageRecordsRequest) => {
       return this.usageService.getListAll(action.payload).pipe(
-        map((usageRecords: Usage[]) => {
+        map((usageRecords: UsageRecord[]) => {
           return new usage.LoadUsageRecordsResponse(usageRecords);
         }),
         catchError(() => of(new usage.LoadUsageRecordsResponse([]))),

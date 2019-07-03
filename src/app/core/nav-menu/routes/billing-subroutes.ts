@@ -1,6 +1,6 @@
 import { Subroute } from '../models';
 
-export const quotaSubroutes: Subroute[] = [
+export const billingSubroutes: Subroute[] = [
   {
     text: 'NAVIGATION_SIDEBAR.QUOTA-STATEMENT',
     path: '/quota-statement',

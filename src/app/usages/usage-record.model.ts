@@ -28,8 +28,26 @@ export const usageTypeNameMap = [
   'USAGE_TYPE.VM_DISK_BYTES_WRITE',
   'USAGE_TYPE.VM_SNAPSHOT',
 ];
+export const usageTypeClassName = [
+  'ALL',
+  'INSTANCE',
+  'VOLUME',
+  'NETWORK',
+  'IMAGES',
+  'SNAPSHOT',
+  'OTHER',
+];
+export const usageTypeClass = [
+  [],
+  [1, 2, 15, 16, 17],
+  [6, 21, 22, 23, 24],
+  [3, 4, 5, 13],
+  [7, 8],
+  [9, 25],
+  [10, 11, 12, 14],
+];
 
-export interface Usage extends BaseModel {
+export interface UsageRecord extends BaseModel {
   id: string;
   description: string;
   account: string;

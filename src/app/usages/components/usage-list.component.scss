@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
 }
-.usage-list-container {
+.usage-records-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -14,6 +14,10 @@ cs-top-bar h2 {
   padding-left: 30px;
   line-height: 70px;
   margin: 0;
+}
+
+.period-picker {
+  height: 70px;
 }
 
 .usage-list {
@@ -51,6 +55,12 @@ mat-card {
 
     .mat-row:hover {
       background-color: white;
+    }
+
+    td.mat-cell:not(:last-of-type):not(:first-of-type),
+    td.mat-footer-cell:not(:last-of-type):not(:first-of-type),
+    th.mat-header-cell:not(:last-of-type):not(:first-of-type) {
+      padding: 0 8px;
     }
 
     tr:last-child td {

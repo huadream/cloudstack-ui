@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import * as quotaActions from './quota.actions';
+import * as quotaActions from './quota-summary.actions';
 import { QuotaSummary } from '../model/quota-summary.model';
 import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
 
@@ -81,7 +81,7 @@ export function reducer(state = initialState, action: quotaActions.Actions): Sta
   }
 }
 
-export const getQuotaSummaryState = createFeatureSelector<QuotaSummaryState>('quota-summary');
+export const getQuotaSummaryState = createFeatureSelector<QuotaSummaryState>('quotaSummary');
 
 export const getQuotaSummaryRecordsEntitiesState = createSelector(
   getQuotaSummaryState,

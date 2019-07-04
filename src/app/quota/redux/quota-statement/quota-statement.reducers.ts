@@ -4,8 +4,10 @@ import * as quotaStatementActions from './quota-statement.actions';
 import { QuotaStatement } from '../../model/quota-statement.model';
 import * as fromAccounts from '../../../reducers/accounts/redux/accounts.reducers';
 import { QuotaSummary } from '../../model/quota-summary.model';
-import { getQuotaSummaryRecordsEntitiesState } from '../quota-summary.reducers';
-
+import { getQuotaSummaryRecordsEntitiesState } from '../quota-summary/quota-summary.reducers';
+import { DatePeriod } from '../../../shared/interfaces';
+import * as moment from 'moment';
+import * as usageActions from '../../../usages/redux/usage-records.actions';
 /**
  * @ngrx/entity provides a predefined interface for handling
  * a structured dictionary of records. This interface
@@ -16,7 +18,9 @@ import { getQuotaSummaryRecordsEntitiesState } from '../quota-summary.reducers';
 export interface State extends EntityState<QuotaStatement> {
   loading: boolean;
   filters: {
+    date: DatePeriod;
     selectedAccountIds: string[];
+    query: string;
   };
 }
 
@@ -48,6 +52,7 @@ export const adapter: EntityAdapter<QuotaStatement> = createEntityAdapter<QuotaS
 export const initialState: State = adapter.getInitialState({
   loading: false,
   filters: {
+    date: { fromDate: moment().toDate(), toDate: moment().toDate() },
     selectedAccountIds: [],
     query: '',
   },
@@ -100,6 +105,11 @@ export const isLoading = createSelector(
 export const filters = createSelector(
   getQuotaStatementEntitiesState,
   state => state.filters,
+);
+
+export const filterDate = createSelector(
+  filters,
+  state => state.date,
 );
 
 export const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors(

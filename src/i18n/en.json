@@ -1982,5 +1982,61 @@
     "NAME": "Name",
     "TYPE": "Type",
     "DESCRIPTION": "Description"
+  },
+  "USAGE_TYPE": {
+    "RUNNING_VM": "Running VM",
+    "ALLOCATED_VM": "Allocated VM",
+    "IP_ADDRESS": "IP Address",
+    "NETWORK_BYTES_SENT": "Network Bytes Sent",
+    "NETWORK_BYTES_RECEIVED": "Network Bytes Received",
+    "VOLUME": "Volume",
+    "TEMPLATE": "Template",
+    "ISO": "ISO",
+    "SNAPSHOT": "Snapshot",
+    "SECURITY_GROUP": "Security Group",
+    "LOAD_BALANCER_POLICY": "Load Balancer Policy",
+    "PORT_FORWARDING_RULE": "Port Forwarding Rule",
+    "NETWORK_OFFERING": "Network Offering",
+    "VPN_USERS": "VPN Users",
+    "CPU_CLOCK_RATE": "CPU Clock Rate",
+    "CPU_NUMBER": "CPU Number",
+    "MEMORY": "Memory",
+    "VM_DISK_IO_READ": "VM Disk IO Read",
+    "VM_DISK_IO_WRITE": "VM Disk IO Write",
+    "VM_DISK_BYTES_READ": "VM Disk Bytes Read",
+    "VM_DISK_BYTES_WRITE": "VM Disk Bytes Write",
+    "VM_SNAPSHOT": "VM Snapshot"
+  },
+  "USAGE_TYPE_CLASS": {
+    "ALL": "All",
+    "INSTANCE": "Instance",
+    "VOLUME": "Volume",
+    "NETWORK": "Network",
+    "IMAGES": "Images",
+    "SNAPSHOT": "Snapshot",
+    "OTHER": "Other"
+  },
+  "QUOTA_STATEMENT_PAGE": {
+    "ITEM": "Item",
+    "COST": "Cost",
+    "SELECT_ACCOUNTS": "Select accounts",
+    "TOTAL": "Total",
+    "QUOTA_STATEMENT": "Quota Statement"
+  },
+  "USAGE_PAGE": {
+    "ACCOUNT": "Account",
+    "TYPE": "Type",
+    "TIME": "Time",
+    "DESCRIPTION": "Description"
+  },
+  "DASHBOARD_PAGE": {
+    "BALANCE": "Balance",
+    "VIEW_QUOTA_USAGE": "View Quota Usage",
+    "DASHBOARD": "Dashboard",
+    "SUMMARY": "Summary",
+    "CREATE_INSTANCE": "Create Instance",
+    "CREATE_TEMPLATE": "Create Template",
+    "CREATE_VOLUME": "Create Volume",
+    "CREATE_SSH_KEY": "Create SSH key"
   }
 }

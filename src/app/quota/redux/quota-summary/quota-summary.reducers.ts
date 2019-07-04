@@ -1,8 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import * as quotaActions from './quota-summary.actions';
-import { QuotaSummary } from '../model/quota-summary.model';
-import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
+import { QuotaSummary } from '../../model/quota-summary.model';
+import * as fromAccounts from '../../../reducers/accounts/redux/accounts.reducers';
+import { getAccountsEntitiesState } from '../../../reducers/accounts/redux/accounts.reducers';
+import * as quotaStatementActions from '../quota-statement/quota-statement.actions';
+import * as accountActions from '../../../reducers/accounts/redux/accounts.actions';
 
 /**
  * @ngrx/entity provides a predefined interface for handling
@@ -13,7 +16,9 @@ import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
  */
 export interface State extends EntityState<QuotaSummary> {
   loading: boolean;
+  selectedAccountId: number;
   filters: {
+    query: string;
     selectedAccountIds: string[];
   };
 }
@@ -45,6 +50,7 @@ export const adapter: EntityAdapter<QuotaSummary> = createEntityAdapter<QuotaSum
  */
 export const initialState: State = adapter.getInitialState({
   loading: false,
+  selectedAccountId: null,
   filters: {
     selectedAccountIds: [],
     query: '',
@@ -57,6 +63,23 @@ export function reducer(state = initialState, action: quotaActions.Actions): Sta
       return {
         ...state,
         loading: true,
+      };
+    }
+
+    case quotaActions.LOAD_SELECTED_SUMMARY_REQUEST: {
+      return {
+        ...state,
+        selectedAccountId: action.payload,
+      };
+    }
+
+    case quotaActions.QUOTA_SUMMARY_FILTER_UPDATE: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          ...action.payload,
+        },
       };
     }
     case quotaActions.LOAD_QUOTA_SUMMARY_RESPONSE: {
@@ -88,6 +111,17 @@ export const getQuotaSummaryRecordsEntitiesState = createSelector(
   state => state.list,
 );
 
+export const getSelectedId = createSelector(
+  getAccountsEntitiesState,
+  state => state.selectedAccountId,
+);
+
+export const getSelectedQuotaSummary = createSelector(
+  getQuotaSummaryState,
+  getSelectedId,
+  (state, selectedId) => state.list.entities[selectedId],
+);
+
 export const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors(
   getQuotaSummaryRecordsEntitiesState,
 );
@@ -105,6 +139,11 @@ export const filters = createSelector(
 export const filterSelectedAccountIds = createSelector(
   filters,
   state => state.selectedAccountIds,
+);
+
+export const filterQuery = createSelector(
+  filters,
+  state => state.query,
 );
 
 export const selectFilteredQuotaSummary = createSelector(
@@ -126,6 +165,20 @@ export const selectFilteredQuotaSummary = createSelector(
 
     return quotaSummary.filter(quotaSummaries => {
       return selectedAccountIdsFilter(quotaSummaries);
+    });
+  },
+);
+
+export const selectQueryQuotaSummary = createSelector(
+  selectAll,
+  filterQuery,
+  (quotaSummaries, query) => {
+    const queryLower = query && query.toLowerCase();
+    const queryFilter = quotaSummary =>
+      !query || quotaSummary.name.toLowerCase().includes(queryLower);
+
+    return quotaSummaries.filter(account => {
+      return queryFilter(account);
     });
   },
 );

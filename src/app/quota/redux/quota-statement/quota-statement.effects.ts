@@ -11,7 +11,7 @@ import { QuotaStatementService } from '../../quota-statement.service';
 @Injectable()
 export class QuotaStatementEffects {
   @Effect()
-  loadUsageRecords$: Observable<Action> = this.actions$.pipe(
+  loadQuotaStatement$: Observable<Action> = this.actions$.pipe(
     ofType(quotaStatementAction.LOAD_QUOTA_STATEMENT_REQUEST),
     switchMap((action: quotaStatementAction.LoadQuotaStatementRequest) => {
       return this.quotaStatementService.getStatement(action.payload).pipe(

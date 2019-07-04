@@ -13,11 +13,11 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import { MatDatepicker, MatDialog } from '@angular/material';
 import { onErrorResumeNext } from 'rxjs/operators';
 import DateTimeFormat = Intl.DateTimeFormat;
-import { Language } from '../../../shared/types';
-import { DatePickerDialogComponent } from '../../../shared/components/date-picker';
-import { formatIso } from '../../../shared/components/date-picker/dateUtils';
+import { Language } from '../../types';
+import { DatePickerDialogComponent } from '../date-picker';
+import { formatIso } from '../date-picker/dateUtils';
 import moment = require('moment');
-import { DatePeriod } from '../../../shared/interfaces';
+import { DatePeriod } from '../../interfaces';
 
 interface DatePickerConfig {
   okLabel?: string;

@@ -12,6 +12,7 @@ import { reducers } from './redux/usage-records.reducers';
 import { UsageRecordsEffects } from './redux/usage-records.effects';
 import { UsageListComponent } from './components/usage-list.component';
 import { QuotaModule } from '../quota/quota.module';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { QuotaModule } from '../quota/quota.module';
     SharedModule,
     MaterialModule,
     QuotaModule,
+    NgxMatSelectSearchModule,
     StoreModule.forFeature('usageRecords', reducers),
     EffectsModule.forFeature([UsageRecordsEffects]),
   ],

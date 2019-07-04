@@ -16,7 +16,7 @@ export const usageTypeNameMap = [
   'USAGE_TYPE.PORT_FORWARDING_RULE',
   'USAGE_TYPE.NETWORK_OFFERING',
   'USAGE_TYPE.VPN_USERS',
-  'USAGE_TYPE.CPU_SPEED',
+  'USAGE_TYPE.CPU_CLOCK_RATE',
   'USAGE_TYPE.CPU_NUMBER',
   'USAGE_TYPE.MEMORY',
   '',
@@ -29,13 +29,13 @@ export const usageTypeNameMap = [
   'USAGE_TYPE.VM_SNAPSHOT',
 ];
 export const usageTypeClassName = [
-  'ALL',
-  'INSTANCE',
-  'VOLUME',
-  'NETWORK',
-  'IMAGES',
-  'SNAPSHOT',
-  'OTHER',
+  'USAGE_TYPE_CLASS.ALL',
+  'USAGE_TYPE_CLASS.INSTANCE',
+  'USAGE_TYPE_CLASS.VOLUME',
+  'USAGE_TYPE_CLASS.NETWORK',
+  'USAGE_TYPE_CLASS.IMAGES',
+  'USAGE_TYPE_CLASS.SNAPSHOT',
+  'USAGE_TYPE_CLASS.OTHER',
 ];
 export const usageTypeClass = [
   [],

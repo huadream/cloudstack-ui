@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { map, takeUntil, withLatestFrom } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 const debounce = require('lodash/debounce');
 import * as moment from 'moment';
-
 import { State, UserTagsSelectors } from '../../root-store';
 import * as usageAction from '../redux/usage-records.actions';
 import { FilterService } from '../../shared/services/filter.service';
@@ -14,8 +13,9 @@ import * as fromAccounts from '../../reducers/accounts/redux/accounts.reducers';
 import { WithUnsubscribe } from '../../utils/mixins/with-unsubscribe';
 import { AuthService } from '../../shared/services/auth.service';
 import { DatePeriod } from '../../shared/interfaces';
+import * as accountActions from '../../reducers/accounts/redux/accounts.actions';
 
-const FILTER_KEY = 'usageListFilters';
+const FILTER_KEY = 'usageRecordsFilters';
 
 @Component({
   selector: 'cs-usage-records-container',
@@ -26,11 +26,13 @@ const FILTER_KEY = 'usageListFilters';
       [firstDayOfWeek]="firstDayOfWeek$ | async"
       [date]="date$ | async"
       [query]="query$ | async"
+      [accountQuery]="accountQuery$ | async"
       [accounts]="accounts$ | async"
       [isAdmin]="isAdmin()"
       [selectedClass]="selectedClass$ | async"
       [selectedAccountIds]="selectedAccountIds$ | async"
       (accountChanged)="onAccountChange($event)"
+      (accountQueryChanged)="onAccountQueryChange($event)"
       (dateChange)="onDateChange($event)"
       (queryChanged)="onQueryChange($event)"
       (selectedClassChange)="onSelectedClassChange($event)"
@@ -40,20 +42,20 @@ const FILTER_KEY = 'usageListFilters';
 export class UsageRecordsContainerComponent extends WithUnsubscribe() implements OnInit {
   readonly firstDayOfWeek$ = this.store.pipe(select(UserTagsSelectors.getFirstDayOfWeek));
   readonly usages$ = this.store.pipe(select(fromUsages.selectFilteredUsageRecords));
-  readonly accounts$ = this.store.pipe(select(fromAccounts.selectAll));
+  readonly accounts$ = this.store.pipe(select(fromAccounts.selectQueryAccounts));
+  readonly accountQuery$ = this.store.pipe(select(fromAccounts.filterQuery));
   readonly query$ = this.store.pipe(select(fromUsages.filterQuery));
   readonly loading$ = this.store.pipe(select(fromUsages.isLoading));
   readonly filters$ = this.store.pipe(select(fromUsages.filters));
   readonly selectedClass$ = this.store.pipe(select(fromUsages.filterSelectedClass));
   readonly selectedAccountIds$ = this.store.pipe(select(fromUsages.filterSelectedAccountIds));
-
   readonly date$ = this.store.pipe(select(fromUsages.filterDate));
 
   private filterService = new FilterService(
     {
       fromDate: { type: 'string' },
       toDate: { type: 'string' },
-      class: { type: 'string' },
+      class: { type: 'string', defaultOption: '0' },
       accounts: { type: 'array', defaultOption: [] },
       query: { type: 'string' },
     },
@@ -89,6 +91,10 @@ export class UsageRecordsContainerComponent extends WithUnsubscribe() implements
 
   public onAccountChange(selectedAccountIds: string[]) {
     this.store.dispatch(new usageAction.UsageFilterUpdate({ selectedAccountIds }));
+  }
+
+  public onAccountQueryChange(query: string) {
+    this.store.dispatch(new accountActions.AccountFilterUpdate({ query }));
   }
 
   public onDateChange(date: DatePeriod) {

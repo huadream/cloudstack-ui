@@ -23,6 +23,7 @@ export interface State extends EntityState<Account> {
     selectedRoleTypes: string[];
     selectedStates: string[];
     selectedGroupings: any[];
+    query: string;
   };
 }
 
@@ -61,6 +62,7 @@ export const initialState: State = adapter.getInitialState({
     selectedRoleNames: [],
     selectedStates: [],
     selectedGroupings: [],
+    query: '',
   },
 });
 
@@ -229,6 +231,11 @@ export const filterSelectedGroupings = createSelector(
   state => state.selectedGroupings,
 );
 
+export const filterQuery = createSelector(
+  filters,
+  state => state.query,
+);
+
 export const selectUserAccount = createSelector(
   selectEntities,
   fromAuth.getUserAccountId,
@@ -292,6 +299,19 @@ export const selectDomainAccounts = createSelector(
 
     return accounts.filter(account => {
       return userDomainFilter(account);
+    });
+  },
+);
+
+export const selectQueryAccounts = createSelector(
+  selectAll,
+  filterQuery,
+  (accounts, query) => {
+    const queryLower = query && query.toLowerCase();
+    const queryFilter = account => !query || account.name.toLowerCase().includes(queryLower);
+
+    return accounts.filter(account => {
+      return queryFilter(account);
     });
   },
 );

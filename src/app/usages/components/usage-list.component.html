@@ -8,8 +8,18 @@
           [(ngModel)]="selectedAccountIds"
           (selectionChange)="accountChanged.emit($event.value)"
         >
-          <mat-option *ngFor="let account of accounts" [value]="account.id"
-            >{{ account.fullDomain }}{{ account.name }}
+          <mat-option>
+            <ngx-mat-select-search
+              [placeholderLabel]="'Search...'"
+              [noEntriesFoundLabel]="'no matching found'"
+              [ngModel]="accountQuery"
+              (ngModelChange)="accountQueryChanged.emit($event)"
+            >
+              <mat-icon ngxMatSelectSearchClear class="mdi-close"></mat-icon>
+            </ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let account of accounts" [value]="account.id">
+            {{ account.fullDomain }}{{ account.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -39,7 +49,7 @@
         [selectedIndex]="selectedClass"
         (selectedTabChange)="onTabChanged($event.index)"
       >
-        <mat-tab *ngFor="let tab of tabs" [label]="tab"></mat-tab>
+        <mat-tab *ngFor="let tab of tabs" [label]="tab | translate"></mat-tab>
       </mat-tab-group>
       <div *loading="isLoading">
         <ng-container *ngIf="usages?.length; then usagesTable; else noUsages"></ng-container>
@@ -60,7 +70,7 @@
             </ng-container>
 
             <ng-container matColumnDef="usagehour">
-              <th mat-header-cell *matHeaderCellDef>{{ 'USAGE_PAGE.TYPE' | translate }}</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'USAGE_PAGE.TIME' | translate }}</th>
               <td mat-cell *matCellDef="let element">
                 <span [innerHTML]="rawUsageToString(element.usagehour)"></span>
               </td>
@@ -73,8 +83,14 @@
               </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="this.isAdmin ? tableColumnsAdmin : tableColumns"
+            ></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: this.isAdmin ? tableColumnsAdmin : tableColumns"
+            ></tr>
           </table>
         </ng-template>
         <ng-template #noUsages>

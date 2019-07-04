@@ -1,5 +1,5 @@
 <cs-top-bar cs-panels>
-  <h2>Quota Statement</h2>
+  <h2>{{ 'QUOTA_STATEMENT_PAGE.QUOTA_STATEMENT' | translate }}</h2>
 </cs-top-bar>
 
 <div class="container">
@@ -7,7 +7,13 @@
     [quotaStatement]="quotaStatement$ | async"
     [firstDayOfWeek]="firstDayOfWeek$ | async"
     [isLoading]="isLoading$ | async"
+    [date]="date$ | async"
+    [accounts]="accounts$ | async"
+    [selectedAccountId]="selectedAccountId$ | async"
+    [isAdmin]="isAdmin()"
+    [accountQuery]="accountQuery$ | async"
+    (accountChanged)="onAccountChange($event)"
+    (accountQueryChanged)="onAccountQueryChange($event)"
     (dateChange)="onDateChange($event)"
-  >
-  </cs-quota-statement-list>
+  ></cs-quota-statement-list>
 </div>

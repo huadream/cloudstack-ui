@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    Balance
+    {{ 'DASHBOARD_PAGE.BALANCE' | translate }}
   </mat-card-header>
   <mat-card-content>
     <div class="dashboard-balance">
@@ -10,7 +10,7 @@
       <div class="card-right-button">
         <button mat-button routerLink="/quota-statement">
           <mat-icon class="mdi-eye"></mat-icon>
-          View Quota Usage
+          {{ 'DASHBOARD_PAGE.VIEW_QUOTA_USAGE' | translate }}
         </button>
       </div>
     </mat-card-actions>

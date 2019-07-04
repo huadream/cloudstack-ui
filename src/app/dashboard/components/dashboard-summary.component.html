@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    Summary
+    {{ 'DASHBOARD_PAGE.SUMMARY' | translate }}
   </mat-card-header>
   <mat-card-content>
     <table mat-table [dataSource]="dataSource">
@@ -13,7 +13,7 @@
       <ng-container matColumnDef="action">
         <td mat-cell *matCellDef="let element">
           <button mat-button [routerLink]="element.action_route">
-            {{ element.action }}
+            {{ element.action | translate }}
           </button>
         </td>
       </ng-container>

@@ -21,8 +21,8 @@ import { ZonesEffects } from '../reducers/zones/redux/zones.effects';
 import { AccountsEffects } from '../reducers/accounts/redux/accounts.effects';
 import { AccountTagsEffects } from '../reducers/account-tags/redux/account-tags.effects';
 import { ServiceOfferingEffects } from '../reducers/service-offerings/redux/service-offerings.effects';
-import { quotaSummaryReducers } from '../quota/redux/quota-summary.reducers';
-import { QuotaSummaryEffects } from '../quota/redux/quota-summary.effects';
+import { quotaSummaryReducers } from '../quota/redux/quota-summary/quota-summary.reducers';
+import { QuotaSummaryEffects } from '../quota/redux/quota-summary/quota-summary.effects';
 
 @NgModule({
   imports: [

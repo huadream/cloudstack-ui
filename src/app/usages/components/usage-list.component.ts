@@ -7,7 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { MatTabChangeEvent, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 
 import { UsageRecord, usageTypeClass, usageTypeClassName } from '../usage-record.model';
@@ -34,6 +34,8 @@ export class UsageListComponent implements OnChanges {
   @Input()
   public query: string;
   @Input()
+  public accountQuery: string;
+  @Input()
   public accounts: Account[] = [];
   @Input()
   public selectedAccountIds: string[] = [];
@@ -49,11 +51,13 @@ export class UsageListComponent implements OnChanges {
   public selectedClassChange = new EventEmitter<number>();
   @Output()
   public accountChanged = new EventEmitter<string[]>();
+  @Output()
+  public accountQueryChanged = new EventEmitter<string>();
 
   public tabs = usageTypeClassName;
   public dataSource: MatTableDataSource<UsageRecord>;
-  public tableColumns = ['account', 'usagetype', 'usagehour', 'description'];
-
+  public tableColumns = ['usagetype', 'usagehour', 'description'];
+  public tableColumnsAdmin = ['account', 'usagetype', 'usagehour', 'description'];
   constructor(
     public dateTimeFormatterService: DateTimeFormatterService,
     public translate: TranslateService,

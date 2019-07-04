@@ -13,24 +13,45 @@
           (changed)="dateChange.emit($event)"
         ></cs-period-picker>
       </div>
+      <mat-form-field *ngIf="isAdmin" class="account-select">
+        <mat-select
+          [placeholder]="'VM_PAGE.FILTERS.SELECT_ACCOUNTS' | translate"
+          [(ngModel)]="selectedAccountId"
+          (selectionChange)="onSelectedAccountChanged($event.value)"
+        >
+          <mat-option>
+            <ngx-mat-select-search
+              [placeholderLabel]="'Search...'"
+              [noEntriesFoundLabel]="'no matching found'"
+              [ngModel]="accountQuery"
+              (ngModelChange)="accountQueryChanged.emit($event)"
+            >
+              <mat-icon ngxMatSelectSearchClear class="mdi-close"></mat-icon>
+            </ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let account of accounts" [value]="account.id"
+            >{{ account.fullDomain }}{{ account.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-card-title>
   </mat-card-header>
   <mat-divider></mat-divider>
 
   <table mat-table [dataSource]="dataSource" *loading="isLoading">
     <ng-container matColumnDef="typename">
-      <th mat-header-cell *matHeaderCellDef>Item</th>
-      <td mat-footer-cell *matFooterCellDef>Total</td>
+      <th mat-header-cell *matHeaderCellDef>{{ 'QUOTA_STATEMENT_PAGE.ITEM' | translate }}</th>
+      <td mat-footer-cell *matFooterCellDef>{{ 'QUOTA_STATEMENT_PAGE.TOTAL' | translate }}</td>
     </ng-container>
     <ng-container matColumnDef="main">
       <td mat-cell *matCellDef="let element" colspan="2">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{ element.className }}
+              {{ element.className | translate }}
             </mat-panel-title>
             <mat-panel-description>
-              {{ quotaStatement[0]?.currency }} {{ element.quota }}
+              {{ element.quota }}
             </mat-panel-description>
           </mat-expansion-panel-header>
 
@@ -52,7 +73,7 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="quota">
-      <th mat-header-cell *matHeaderCellDef>Cost</th>
+      <th mat-header-cell *matHeaderCellDef>{{ 'QUOTA_STATEMENT_PAGE.COST' | translate }}</th>
       <td mat-footer-cell *matFooterCellDef>
         {{ quotaStatement[0]?.currency }} {{ quotaStatement[0]?.totalquota }}
       </td>

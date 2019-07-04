@@ -12,8 +12,9 @@ import { QuotaStatementEffects } from './redux/quota-statement/quota-statement.e
 import { QuotaStatementService } from './quota-statement.service';
 import { quotaStatementReducers } from './redux/quota-statement/quota-statement.reducers';
 import { QuotaStatementListComponent } from './components/quota-statement-list.component';
-import { PeriodPickerComponent } from './components/period-picker/period-picker.component';
+import { PeriodPickerComponent } from '../shared/components/period-picker/period-picker.component';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
     MaterialModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgxMatSelectSearchModule,
     StoreModule.forFeature('quotaStatement', quotaStatementReducers),
     EffectsModule.forFeature([QuotaStatementEffects]),
   ],

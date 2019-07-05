@@ -2038,5 +2038,9 @@
     "CREATE_TEMPLATE": "Create Template",
     "CREATE_VOLUME": "Create Volume",
     "CREATE_SSH_KEY": "Create SSH key"
+  },
+  "SELECT_SEARCH": {
+    "SEARCH": "Search...",
+    "NO_MATCH": "no matching found"
   }
 }

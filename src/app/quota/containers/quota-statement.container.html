@@ -11,9 +11,7 @@
     [accounts]="accounts$ | async"
     [selectedAccountId]="selectedAccountId$ | async"
     [isAdmin]="isAdmin()"
-    [accountQuery]="accountQuery$ | async"
     (accountChanged)="onAccountChange($event)"
-    (accountQueryChanged)="onAccountQueryChange($event)"
     (dateChange)="onDateChange($event)"
   ></cs-quota-statement-list>
 </div>

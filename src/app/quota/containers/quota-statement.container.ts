@@ -30,8 +30,7 @@ export class QuotaStatementContainerComponent extends WithUnsubscribe() implemen
   readonly isLoading$ = this.store.pipe(select(fromQuota.isLoading));
   readonly filters$ = this.store.pipe(select(fromQuota.filters));
   readonly date$ = this.store.pipe(select(fromQuota.filterDate));
-  readonly accountQuery$ = this.store.pipe(select(fromAccounts.filterQuery));
-  readonly accounts$ = this.store.pipe(select(fromAccounts.selectQueryAccounts));
+  readonly accounts$ = this.store.pipe(select(fromAccounts.selectAll));
   readonly account$ = this.store.pipe(select(fromAccounts.getSelectedAccount));
   readonly selectedAccountId$ = this.store.pipe(select(fromAccounts.getSelectedId));
 
@@ -94,10 +93,6 @@ export class QuotaStatementContainerComponent extends WithUnsubscribe() implemen
 
   private onAccountChange(selectedAccountId: string) {
     this.store.dispatch(new accountActions.LoadSelectedAccount(selectedAccountId));
-  }
-
-  private onAccountQueryChange(query: string) {
-    this.store.dispatch(new accountActions.AccountFilterUpdate({ query }));
   }
 
   private onDateChange(date: DatePeriod) {

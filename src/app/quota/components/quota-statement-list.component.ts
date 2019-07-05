@@ -36,8 +36,6 @@ export class QuotaStatementListComponent implements OnChanges {
   @Input()
   public accounts: Account[] = [];
   @Input()
-  public accountQuery: string;
-  @Input()
   public selectedAccountId: number;
   @Input()
   public date: DatePeriod;
@@ -45,11 +43,11 @@ export class QuotaStatementListComponent implements OnChanges {
   public dateChange = new EventEmitter<DatePeriod>();
   @Output()
   public accountChanged = new EventEmitter<string>();
-  @Output()
-  public accountQueryChanged = new EventEmitter<string>();
 
-  displayedColumns: string[] = ['typename', 'quota'];
-  dataSource = new MatTableDataSource([]);
+  public accountsFiltered: Account[] = [];
+  public accountQuery = '';
+  public displayedColumns: string[] = ['typename', 'quota'];
+  public dataSource = new MatTableDataSource([]);
 
   constructor(
     public dateTimeFormatterService: DateTimeFormatterService,
@@ -66,7 +64,10 @@ export class QuotaStatementListComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.quotaStatement.length > 0) {
+    const quotaStatement = changes['quotaStatement'];
+    const accounts = changes['accounts'];
+
+    if (quotaStatement && this.quotaStatement.length > 0) {
       const data = [];
       usageTypeClassName.map((value, index) => {
         if (index === 0) {
@@ -92,5 +93,16 @@ export class QuotaStatementListComponent implements OnChanges {
 
       this.dataSource.data = data;
     }
+
+    if (accounts) {
+      this.onAccountQueryChanged(this.accountQuery);
+    }
+  }
+
+  public onAccountQueryChanged(accountQuery: string) {
+    const queryLower = accountQuery && accountQuery.toLowerCase();
+    this.accountsFiltered = this.accounts.filter(
+      account => !accountQuery || account.name.toLowerCase().includes(queryLower),
+    );
   }
 }

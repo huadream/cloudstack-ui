@@ -34,8 +34,6 @@ export class UsageListComponent implements OnChanges {
   @Input()
   public query: string;
   @Input()
-  public accountQuery: string;
-  @Input()
   public accounts: Account[] = [];
   @Input()
   public selectedAccountIds: string[] = [];
@@ -51,9 +49,9 @@ export class UsageListComponent implements OnChanges {
   public selectedClassChange = new EventEmitter<number>();
   @Output()
   public accountChanged = new EventEmitter<string[]>();
-  @Output()
-  public accountQueryChanged = new EventEmitter<string>();
 
+  public accountsFiltered: Account[] = [];
+  public accountQuery = '';
   public tabs = usageTypeClassName;
   public dataSource: MatTableDataSource<UsageRecord>;
   public tableColumns = ['usagetype', 'usagehour', 'description'];
@@ -77,8 +75,12 @@ export class UsageListComponent implements OnChanges {
 
   public ngOnChanges(changes: SimpleChanges) {
     const usages = changes['usages'];
+    const accounts = changes['accounts'];
     if (usages) {
       this.dataSource.data = usages.currentValue;
+    }
+    if (accounts) {
+      this.onAccountQueryChanged(this.accountQuery);
     }
   }
 
@@ -104,5 +106,12 @@ export class UsageListComponent implements OnChanges {
       output = `${output} ${second} sec`;
     }
     return output;
+  }
+
+  public onAccountQueryChanged(accountQuery: string) {
+    const queryLower = accountQuery && accountQuery.toLowerCase();
+    this.accountsFiltered = this.accounts.filter(
+      account => !accountQuery || account.name.toLowerCase().includes(queryLower),
+    );
   }
 }

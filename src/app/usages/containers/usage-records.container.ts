@@ -26,13 +26,11 @@ const FILTER_KEY = 'usageRecordsFilters';
       [firstDayOfWeek]="firstDayOfWeek$ | async"
       [date]="date$ | async"
       [query]="query$ | async"
-      [accountQuery]="accountQuery$ | async"
       [accounts]="accounts$ | async"
       [isAdmin]="isAdmin()"
       [selectedClass]="selectedClass$ | async"
       [selectedAccountIds]="selectedAccountIds$ | async"
       (accountChanged)="onAccountChange($event)"
-      (accountQueryChanged)="onAccountQueryChange($event)"
       (dateChange)="onDateChange($event)"
       (queryChanged)="onQueryChange($event)"
       (selectedClassChange)="onSelectedClassChange($event)"
@@ -42,8 +40,7 @@ const FILTER_KEY = 'usageRecordsFilters';
 export class UsageRecordsContainerComponent extends WithUnsubscribe() implements OnInit {
   readonly firstDayOfWeek$ = this.store.pipe(select(UserTagsSelectors.getFirstDayOfWeek));
   readonly usages$ = this.store.pipe(select(fromUsages.selectFilteredUsageRecords));
-  readonly accounts$ = this.store.pipe(select(fromAccounts.selectQueryAccounts));
-  readonly accountQuery$ = this.store.pipe(select(fromAccounts.filterQuery));
+  readonly accounts$ = this.store.pipe(select(fromAccounts.selectAll));
   readonly query$ = this.store.pipe(select(fromUsages.filterQuery));
   readonly loading$ = this.store.pipe(select(fromUsages.isLoading));
   readonly filters$ = this.store.pipe(select(fromUsages.filters));
@@ -91,10 +88,6 @@ export class UsageRecordsContainerComponent extends WithUnsubscribe() implements
 
   public onAccountChange(selectedAccountIds: string[]) {
     this.store.dispatch(new usageAction.UsageFilterUpdate({ selectedAccountIds }));
-  }
-
-  public onAccountQueryChange(query: string) {
-    this.store.dispatch(new accountActions.AccountFilterUpdate({ query }));
   }
 
   public onDateChange(date: DatePeriod) {

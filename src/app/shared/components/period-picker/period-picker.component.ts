@@ -81,7 +81,8 @@ export class PeriodPickerComponent implements ControlValueAccessor, OnChanges {
     }
   }
 
-  public propagateChange: any = () => {};
+  public onTouchedCallback: () => void = function() {};
+  public onChangeCallback: (_: any) => void = function() {};
 
   public writeValue(value: DatePeriod): void {
     if (value) {
@@ -101,17 +102,19 @@ export class PeriodPickerComponent implements ControlValueAccessor, OnChanges {
   }
 
   public registerOnChange(fn): void {
-    this.propagateChange = fn;
+    this.onChangeCallback = fn;
   }
 
-  public registerOnTouched(): void {}
+  public registerOnTouched(fn): void {
+    this.onTouchedCallback = fn;
+  }
 
   public dateChange() {
     this.nextDisabled =
       this.maxDate.setHours(0, 0, 0, 0) <= this._toDate.value.setHours(0, 0, 0, 0);
 
     this.changed.emit({ fromDate: this._fromDate.value, toDate: this._toDate.value });
-    this.propagateChange({ fromDate: this._fromDate.value, toDate: this._toDate.value });
+    this.onChangeCallback({ fromDate: this._fromDate.value, toDate: this._toDate.value });
   }
 
   public adjustDate(pre: boolean) {

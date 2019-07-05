@@ -9,7 +9,7 @@
           [firstDayOfWeek]="firstDayOfWeek"
           [dateTimeFormat]="dateTimeFormatterService.dateTimeFormat"
           [cancelLabel]="'COMMON.CANCEL' | translate"
-          [ngModel]="date"
+          [(ngModel)]="date"
           (changed)="dateChange.emit($event)"
         ></cs-period-picker>
       </div>
